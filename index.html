@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ – Videocitofonia: Estensione Garanzia & KASKO</title>
+
+  <style>
+    :root{
+      --bt-orange: #ff6a00;
+      --bt-orange-2: #ff7a1a;
+      --bt-black: #0f0f10;
+      --bt-white: #ffffff;
+      --bg: #f4f5f7;
+      --card-border: rgba(15,15,16,.08);
+      --shadow: 0 10px 30px rgba(15,15,16,.08);
+      --radius: 14px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      font-family: Arial, sans-serif;
+      margin:0;
+      background: var(--bg);
+      color: var(--bt-black);
+    }
+
+    /* ===== TOP BAR (BIANCO + LOGO) ===== */
+    header.topbar{
+      background: #ffffff;
+      color: #111;
+      padding: 14px 24px;
+      border-bottom: 6px solid var(--bt-orange);
+    }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      max-width: none;
+      margin: 0;
+    }
+
+    .logo{
+      height: 46px;
+      width: auto;
+      display: block;
+    }
+
+    .titles h1{
+      margin: 0 0 2px 0;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .titles p{
+      margin: 0;
+      font-size: 13px;
+      opacity: .92;
+    }
+
+    /* ===== LAYOUT ===== */
+    .wrap{
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:18px;
+      padding:18px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .card{
+      background: var(--bt-white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+      border:1px solid var(--card-border);
+    }
+
+    .search{display:flex; gap:10px; align-items:center;}
+
+    input, select, textarea{
+      width:100%;
+      padding:11px 12px;
+      border:1px solid rgba(15,15,16,.14);
+      border-radius: 12px;
+      outline:none;
+      background: #fff;
+    }
+
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(255,106,0,.65);
+      box-shadow: 0 0 0 3px rgba(255,106,0,.15);
+    }
+
+    button{
+      padding:10px 14px;
+      border:0;
+      border-radius: 12px;
+      background: var(--bt-black);
+      color: var(--bt-white);
+      cursor:pointer;
+      font-weight: 700;
+    }
+    button:hover{filter: brightness(1.05);}
+    button:disabled{opacity:.5; cursor:not-allowed;}
+
+    #resetBtn{
+      background: transparent;
+      color: var(--bt-black);
+      border:1px solid rgba(15,15,16,.18);
+    }
+    #resetBtn:hover{
+      border-color: rgba(255,106,0,.65);
+      box-shadow: 0 0 0 3px rgba(255,106,0,.12);
+    }
+
+    .cats button{
+      width:100%;
+      text-align:left;
+      background:#fff;
+      color: var(--bt-black);
+      border:1px solid rgba(15,15,16,.12);
+      margin:8px 0;
+      font-weight:700;
+      position:relative;
+    }
+    .cats button:hover{
+      border-color: rgba(255,106,0,.65);
+    }
+    .cats button.active{
+      background: rgba(255,106,0,.10);
+      border-color: rgba(255,106,0,.75);
+      color: var(--bt-black);
+    }
+    .cats button.active::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: var(--bt-orange);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    details{
+      border:1px solid rgba(15,15,16,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin: 12px 0;
+      background: #fff;
+      overflow:hidden;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 800;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary::before{
+      content:"";
+      display:inline-block;
+      width:10px; height:10px;
+      border-right:2px solid var(--bt-orange);
+      border-bottom:2px solid var(--bt-orange);
+      transform: rotate(-45deg);
+      margin-right:10px;
+      position: relative;
+      top:-1px;
+    }
+    details[open] summary::before{
+      transform: rotate(45deg);
+      top:-2px;
+    }
+
+    .meta{
+      font-size:12px;
+      opacity:.75;
+      margin-top:8px;
+    }
+
+    .badge{
+      display:inline-block;
+      font-size:12px;
+      padding:5px 10px;
+      border-radius:999px;
+      background: rgba(255,106,0,.10);
+      color: var(--bt-black);
+      border:1px solid rgba(255,106,0,.35);
+      margin-right:6px;
+      margin-top:6px;
+    }
+
+    .footer-cta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    #openFormBtn{
+      background: var(--bt-orange);
+      color: #111;
+    }
+    #openFormBtn:hover{filter: brightness(1.02);}
+
+    #sendBtn{
+      background: var(--bt-orange);
+      color:#111;
+    }
+
+    .hidden{display:none;}
+    .ok{background:#e9fff0; border:1px solid #b7f0c9; padding:10px; border-radius:12px;}
+    .err{background:#ffecec; border:1px solid #ffbcbc; padding:10px; border-radius:12px;}
+
+    @media (max-width: 900px){
+      .wrap{grid-template-columns: 1fr; }
+      .brand{gap: 12px;}
+      .logo{height: 40px;}
+      .titles h1{font-size: 20px;}
+    }
+
+    /* ===== MODAL (popup) ===== */
+    .modal-overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(15,15,16,.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 9999;
+    }
+    .modal-overlay.open{ display: flex; }
+
+    .modal{
+      width: 100%;
+      max-width: 820px;
+      background: #fff;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,.25);
+      border: 1px solid rgba(15,15,16,.12);
+      overflow: hidden;
+    }
+
+    .modal-header{
+      display:flex;
+      align-items:center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #fff;
+      border-bottom: 6px solid var(--bt-orange);
+    }
+
+    .modal-title{
+      font-weight: 800;
+      font-size: 16px;
+    }
+
+    .modal-close{
+      background: transparent;
+      border: 1px solid rgba(15,15,16,.18);
+      color: var(--bt-black);
+      padding: 8px 10px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 800;
+    }
+
+    .modal-body{
+      padding: 16px;
+      max-height: calc(100vh - 140px);
+      overflow: auto;
+    }
+
+    /* ===== Toast ===== */
+    .toast{
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 10000;
+      background: #ffffff;
+      border: 1px solid rgba(15,15,16,.12);
+      box-shadow: 0 16px 40px rgba(0,0,0,.18);
+      border-left: 6px solid var(--bt-orange);
+      border-radius: 14px;
+      padding: 12px 14px;
+      min-width: 260px;
+      max-width: 360px;
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .toast strong{display:block; font-size: 14px; margin-bottom: 4px;}
+    .toast .meta{margin:0; opacity:.8}
+
+    /* ===== X animata ===== */
+    .modal-close-anim{
+      width: 42px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform .18s ease;
+    }
+    .modal-close-anim span{
+      position: absolute;
+      width: 18px;
+      height: 2px;
+      background: var(--bt-black);
+      border-radius: 999px;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .modal-close-anim span:nth-child(1){ transform: rotate(45deg); }
+    .modal-close-anim span:nth-child(2){ transform: rotate(-45deg); }
+
+    .modal-close-anim:hover{
+      transform: rotate(8deg) scale(1.03);
+      border-color: rgba(255,106,0,.65);
+      box-shadow: 0 0 0 3px rgba(255,106,0,.12);
+    }
+    .modal-close-anim:active{
+      transform: rotate(0deg) scale(.98);
+    }
+
+    /* animazione “chiusura” */
+    .modal-overlay.closing .modal{
+      animation: modalOut .18s ease forwards;
+    }
+    @keyframes modalOut{
+      from{ transform: translateY(0); opacity: 1; }
+      to{ transform: translateY(8px); opacity: 0; }
+    }
+
+    /* animazione “apertura” */
+    .modal-overlay.open .modal{
+      animation: modalIn .18s ease;
+    }
+    @keyframes modalIn{
+      from{ transform: translateY(10px); opacity: 0; }
+      to{ transform: translateY(0); opacity: 1; }
+    }
+  </style>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="BT_Service.jpg" alt="BTicino Servizi" class="logo">
+      <div class="titles">
+        <h1>FAQ – Videocitofonia: Estensione Garanzia & KASKO</h1>
+        <p>Cerca una risposta o invia una domanda al team.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- Sidebar categorie -->
+    <aside class="card">
+      <h3>Tematiche</h3>
+      <div class="cats" id="catButtons"></div>
+    </aside>
+
+    <!-- Contenuti -->
+    <main>
+      <div class="card">
+        <div class="search">
+          <input id="q" type="search" placeholder="Cerca: KASKO, estensione, garanzia, vandalismo, fulmine, condominio..." />
+          <button id="resetBtn" type="button">Reset</button>
+        </div>
+        <div class="meta" id="count"></div>
+      </div>
+
+      <div id="faqList"></div>
+
+      <!-- CTA pulita -->
+      <div class="card">
+        <div class="footer-cta">
+          <div>
+            <strong>Non hai trovato la risposta?</strong><br/>
+            <span class="meta">Invia la domanda: riceverai riscontro via email.</span>
+          </div>
+          <button type="button" id="openFormBtn">Fai una domanda</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- MODAL POPUP: form invio domanda -->
+  <div id="modalOverlay" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Invia una domanda al team</div>
+
+        <!-- X animata -->
+        <button type="button" class="modal-close modal-close-anim" id="closeModalBtn" aria-label="Chiudi">
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div id="msgBox" class="hidden"></div>
+
+        <!-- FORM: invio email -->
+        <form id="askForm">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <input id="name" name="name" placeholder="Nome e Cognome" required />
+            <input id="email" name="email" type="email" placeholder="Email" required />
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+            <select id="role" name="role" required>
+              <option value="">Ruolo…</option>
+              <option>FTC G.I.</option>
+              <option>FTC G.G.</option>
+              <option>FTC Mercato</option>
+              <option>FTC R.E.</option>
+              <option>FTC Retail</option>
+              <option>FTC S.T.</option>
+              <option>Personale_Interno</option>
+              <option>Altro</option>
+            </select>
+
+            <select id="category" name="category" required>
+              <option value="">Categoria…</option>
+            </select>
+          </div>
+
+          <textarea id="message" name="message" placeholder="Scrivi qui la tua domanda…" rows="4" style="margin-top:10px;" required></textarea>
+
+          <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
+            <button id="sendBtn" type="submit">Invia</button>
+            <span class="meta" id="sendHint"></span>
+          </div>
+
+          <div class="meta" style="margin-top:10px;">
+            <em>Nota: l’invio è consentito solo da email aziendali autorizzate (BTicino/Legrand).</em>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ====== CONFIG EMAILJS (stessi parametri della prima pagina) ======
+    const EMAILJS_PUBLIC_KEY = "vroneqwVOfxcazawc";
+    const EMAILJS_SERVICE_ID = "Sicuri_&_Connessi";
+    const EMAILJS_TEMPLATE_ID = "template_sjl0d24";
+
+    // ====== FILE JSON DELLA PAGINA (QUI CAMBIA) ======
+    const FAQS_JSON_PATH = "./faqs_videocitofonia.json";
+
+    // Inizializza EmailJS
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    // ====== Helpers ======
+    function normalizeEmail(email){
+      return (email || "")
+        .trim()
+        .toLowerCase()
+        .replace(/\s+/g, "")
+        .replace(/\u00A0/g, "");
+    }
+    function uniq(arr){ return [...new Set(arr)].sort(); }
+
+    // ====== Toast ======
+    let toastEl = null;
+    let toastTimer = null;
+
+    function ensureToast(){
+      if (toastEl) return toastEl;
+      toastEl = document.createElement("div");
+      toastEl.className = "toast";
+      toastEl.innerHTML = `<strong></strong><p class="meta"></p>`;
+      document.body.appendChild(toastEl);
+      return toastEl;
+    }
+
+    function showToast(title, message, ms = 2600){
+      const t = ensureToast();
+      t.querySelector("strong").textContent = title || "";
+      t.querySelector(".meta").textContent = message || "";
+      t.classList.add("show");
+
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove("show"), ms);
+    }
+
+    // ====== FAQ UI ======
+    const state = { faqs: [], category: "Tutte", query: "" };
+
+    const catButtons = document.getElementById("catButtons");
+    const faqList = document.getElementById("faqList");
+    const q = document.getElementById("q");
+    const resetBtn = document.getElementById("resetBtn");
+    const count = document.getElementById("count");
+    const catSelect = document.getElementById("category"); // dropdown nel form
+
+    function renderCategories(categories){
+      catButtons.innerHTML = "";
+      const all = ["Tutte", ...categories];
+
+      all.forEach(c => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = c;
+        b.className = (state.category === c) ? "active" : "";
+        b.onclick = () => { state.category = c; render(); renderCategories(categories); };
+        catButtons.appendChild(b);
+      });
+
+      // Select nel form
+      if (catSelect){
+        catSelect.innerHTML = `<option value="">Categoria…</option>` + categories
+          .map(c => `<option value="${c}">${c}</option>`).join("");
+      }
+    }
+
+    function matches(faq){
+      const inCat = (state.category === "Tutte") || (faq.category === state.category);
+      const query = state.query.trim().toLowerCase();
+      if(!query) return inCat;
+
+      const hay = (faq.question + " " + faq.answer + " " + (faq.tags || []).join(" ")).toLowerCase();
+      return inCat && hay.includes(query);
+    }
+
+    function render(){
+      const filtered = state.faqs.filter(matches);
+      count.textContent = `Risultati: ${filtered.length} / ${state.faqs.length}`;
+
+      faqList.innerHTML = filtered.map(f => `
+        <details>
+          <summary>${f.question}</summary>
+          <div style="margin-top:10px;">${f.answer}</div>
+          <div class="meta" style="margin-top:10px;">
+            <span class="badge">${f.category}</span>
+            ${(f.tags || []).map(t => `<span class="badge">${t}</span>`).join("")}
+          </div>
+        </details>
+      `).join("") || `<div class="card">Nessun risultato. Prova con altre parole o invia una domanda.</div>`;
+    }
+
+    async function initFaq(){
+      try{
+        const res = await fetch(FAQS_JSON_PATH, { cache: "no-store" });
+        if(!res.ok) throw new Error("HTTP " + res.status + " nel caricamento di " + FAQS_JSON_PATH);
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error("Il file FAQ non è un array JSON");
+
+        state.faqs = data;
+
+        const categories = uniq(state.faqs.map(f => f.category).filter(Boolean));
+        renderCategories(categories);
+
+        q.addEventListener("input", () => { state.query = q.value; render(); });
+        resetBtn.onclick = () => {
+          state.category="Tutte"; state.query=""; q.value="";
+          render(); renderCategories(categories);
+        };
+
+        render();
+      } catch (e){
+        console.error(e);
+        faqList.innerHTML = `<div class="card err"><strong>Errore caricamento FAQ</strong><br/>${e.message}</div>`;
+        count.textContent = "Impossibile caricare le FAQ.";
+      }
+    }
+    initFaq();
+
+    // ====== Email autorizzate (caricate da allowed_emails.json nella stessa cartella) ======
+    let ALLOWED_EMAILS = new Set();
+    let allowedReady = false;
+
+    async function loadAllowedEmails(){
+      try{
+        const res = await fetch("./allowed_emails.json?v=" + Date.now(), { cache: "no-store" });
+        if(!res.ok) throw new Error("Errore caricamento allowed_emails.json (HTTP " + res.status + ")");
+        const list = await res.json();
+        if(!Array.isArray(list)) throw new Error("allowed_emails.json non è un array JSON");
+        ALLOWED_EMAILS = new Set(list.map(normalizeEmail));
+        allowedReady = true;
+        if (sendBtn) sendBtn.disabled = false;
+      }catch(e){
+        console.error(e);
+        allowedReady = false;
+        if (sendBtn) sendBtn.disabled = true;
+        showMsg("err", "Errore nel caricamento utenti autorizzati. Invio disabilitato.");
+      }
+    }
+
+    // ====== Modal + Form ======
+    const openFormBtn = document.getElementById("openFormBtn");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    const askForm = document.getElementById("askForm");
+    const msgBox = document.getElementById("msgBox");
+    const sendBtn = document.getElementById("sendBtn");
+    const sendHint = document.getElementById("sendHint");
+
+    if (sendBtn) sendBtn.disabled = true;
+
+    function showMsg(type, text){
+      msgBox.className = type === "ok" ? "ok" : "err";
+      msgBox.textContent = text;
+      msgBox.classList.remove("hidden");
+    }
+
+    function openModal(){
+      modalOverlay.classList.add("open");
+      modalOverlay.classList.remove("closing");
+      modalOverlay.setAttribute("aria-hidden","false");
+      msgBox.classList.add("hidden");
+      setTimeout(() => document.getElementById("name")?.focus(), 60);
+    }
+
+    function closeModal(){
+      modalOverlay.classList.add("closing");
+      setTimeout(() => {
+        modalOverlay.classList.remove("open");
+        modalOverlay.classList.remove("closing");
+        modalOverlay.setAttribute("aria-hidden","true");
+      }, 180);
+    }
+
+    openFormBtn.onclick = openModal;
+    closeModalBtn.onclick = closeModal;
+
+    modalOverlay.addEventListener("click", (e) => {
+      if(e.target === modalOverlay) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && modalOverlay.classList.contains("open")) closeModal();
+    });
+
+    loadAllowedEmails();
+
+    askForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msgBox.classList.add("hidden");
+
+      if(!allowedReady){
+        showMsg("err", "Attendi un secondo: sto caricando la lista utenti autorizzati. Riprova tra 2 secondi.");
+        return;
+      }
+
+      const email = normalizeEmail(document.getElementById("email").value);
+
+      if(!ALLOWED_EMAILS.has(email)){
+        showMsg("err", "Invio non consentito: questa email non è autorizzata. Usa la tua email aziendale BTicino/Legrand.");
+        return;
+      }
+
+      const allowedDomains = ["bticino.com", "legrand-ext.com", "legrand.com"];
+      const domain = (email.split("@")[1] || "");
+      if(!allowedDomains.includes(domain)){
+        showMsg("err", "Invio non consentito: usa un indirizzo email aziendale BTicino/Legrand.");
+        return;
+      }
+
+      sendBtn.disabled = true;
+      sendHint.textContent = "Invio in corso…";
+
+      const payload = {
+        name: document.getElementById("name").value.trim(),
+        email: email,
+        role: document.getElementById("role").value,
+        category: document.getElementById("category").value,
+        message: document.getElementById("message").value.trim(),
+        time: new Date().toLocaleString("it-IT"),
+        page: window.location.href
+      };
+
+      try{
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
+        showMsg("ok", "Grazie! La tua domanda è stata inviata correttamente.");
+        showToast("Domanda inviata", "Riceverai riscontro via email.", 2600);
+        askForm.reset();
+        setTimeout(() => closeModal(), 900);
+      }catch(err){
+        console.error(err);
+        showMsg("err", "Errore durante l’invio. Controlla configurazione EmailJS e riprova.");
+      }finally{
+        sendBtn.disabled = false;
+        sendHint.textContent = "";
+      }
+    });
+  </script>
+</body>
+</html>
