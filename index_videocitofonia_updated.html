@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ – Videocitofonia: Estensione Garanzia & KASKO</title>
+
+  <style>
+    :root{
+      --bt-orange:#ff6a00;
+      --bt-black:#0f0f10;
+      --bt-white:#ffffff;
+      --bg:#f4f5f7;
+      --card-border: rgba(15,15,16,.08);
+      --shadow: 0 10px 30px rgba(15,15,16,.08);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Arial,sans-serif;margin:0;background:var(--bg);color:var(--bt-black);}
+
+    header.topbar{background:#fff;color:#111;padding:14px 24px;border-bottom:6px solid var(--bt-orange);}
+    .brand{display:flex;align-items:center;gap:18px;max-width:none;margin:0;}
+    .logo{height:46px;width:auto;display:block;}
+    .titles h1{margin:0 0 2px 0;font-size:22px;font-weight:800;letter-spacing:.2px;}
+    .titles p{margin:0;font-size:13px;opacity:.92;}
+
+    .wrap{display:grid;grid-template-columns:280px 1fr;gap:18px;padding:18px;max-width:1160px;margin:0 auto;}
+    .card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px;border:1px solid var(--card-border);}
+    .search{display:flex;gap:10px;align-items:center;}
+
+    input,select,textarea{width:100%;padding:11px 12px;border:1px solid rgba(15,15,16,.14);border-radius:12px;outline:none;background:#fff;}
+    input:focus,select:focus,textarea:focus{border-color:rgba(255,106,0,.65);box-shadow:0 0 0 3px rgba(255,106,0,.15);}
+
+    button{padding:10px 14px;border:0;border-radius:12px;background:var(--bt-black);color:#fff;cursor:pointer;font-weight:700;}
+    button:hover{filter:brightness(1.05);}
+    button:disabled{opacity:.5;cursor:not-allowed;}
+
+    #resetBtn{background:transparent;color:var(--bt-black);border:1px solid rgba(15,15,16,.18);}
+    #resetBtn:hover{border-color:rgba(255,106,0,.65);box-shadow:0 0 0 3px rgba(255,106,0,.12);}
+
+    .cats button{width:100%;text-align:left;background:#fff;color:var(--bt-black);border:1px solid rgba(15,15,16,.12);margin:8px 0;font-weight:700;position:relative;}
+    .cats button:hover{border-color:rgba(255,106,0,.65);}
+    .cats button.active{background:rgba(255,106,0,.10);border-color:rgba(255,106,0,.75);color:var(--bt-black);}
+    .cats button.active::before{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--bt-orange);border-top-left-radius:12px;border-bottom-left-radius:12px;}
+
+    details{border:1px solid rgba(15,15,16,.10);border-radius:14px;padding:10px 12px;margin:12px 0;background:#fff;overflow:hidden;}
+    summary{cursor:pointer;font-weight:800;list-style:none;}
+    summary::-webkit-details-marker{display:none}
+    summary::before{content:"";display:inline-block;width:10px;height:10px;border-right:2px solid var(--bt-orange);border-bottom:2px solid var(--bt-orange);transform:rotate(-45deg);margin-right:10px;position:relative;top:-1px;}
+    details[open] summary::before{transform:rotate(45deg);top:-2px;}
+
+    .meta{font-size:12px;opacity:.75;margin-top:8px;}
+    .badge{display:inline-block;font-size:12px;padding:5px 10px;border-radius:999px;background:rgba(255,106,0,.10);color:var(--bt-black);border:1px solid rgba(255,106,0,.35);margin-right:6px;margin-top:6px;}
+
+    /* Topic selector (iniziale) */
+    .topicGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+    .topicBtn{display:flex;flex-direction:column;gap:2px;align-items:flex-start;padding:14px;border-radius:14px;border:1px solid rgba(15,15,16,.12);background:#fff;cursor:pointer;font-weight:800;}
+    .topicBtn:hover{border-color:rgba(255,106,0,.65);box-shadow:0 0 0 3px rgba(255,106,0,.10);}
+    .topicBtn .small{font-weight:700;opacity:.8}
+    .topicBtn .small{font-size:12px}
+    .topicBtn.active{border-color:rgba(255,106,0,.75);background:rgba(255,106,0,.08);}
+    .topicTitle{font-size:16px;}
+    .topicCode{font-size:12px;opacity:.75}
+
+    /* CTA */
+    .footer-cta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+    #openFormBtn{background:var(--bt-orange);color:#111;}
+    #openFormBtn:hover{filter:brightness(1.02);}
+
+    /* Popup form + toast */
+    .hidden{display:none;}
+    .ok{background:#e9fff0;border:1px solid #b7f0c9;padding:10px;border-radius:12px;}
+    .err{background:#ffecec;border:1px solid #ffbcbc;padding:10px;border-radius:12px;}
+
+    .modalOverlay{
+      position:fixed; inset:0;
+      background:rgba(15,15,16,.55);
+      display:flex; align-items:center; justify-content:center;
+      padding:18px;
+      z-index:9999;
+    }
+    .modal{
+      width:min(720px, 100%);
+      max-height:calc(100vh - 36px);
+      overflow:auto;
+      background:#fff;
+      border-radius:18px;
+      box-shadow:0 20px 60px rgba(0,0,0,.25);
+      border:1px solid rgba(15,15,16,.12);
+      position:relative;
+    }
+    .modalHeader{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 16px;
+      border-bottom:1px solid rgba(15,15,16,.08);
+    }
+    .modalHeader .title{font-weight:900}
+    .closeX{
+      width:38px;height:38px;border-radius:12px;
+      border:1px solid rgba(15,15,16,.18);
+      background:#fff; cursor:pointer;
+      display:grid; place-items:center;
+      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .closeX:hover{transform:rotate(90deg);border-color:rgba(255,106,0,.65);box-shadow:0 0 0 3px rgba(255,106,0,.12);}
+    .closeX span{display:block; width:14px; height:14px; position:relative;}
+    .closeX span:before,.closeX span:after{
+      content:""; position:absolute; left:6px; top:0;
+      width:2px; height:14px; background:var(--bt-black); border-radius:2px;
+    }
+    .closeX span:before{transform:rotate(45deg);}
+    .closeX span:after{transform:rotate(-45deg);}
+
+    .modalBody{padding:16px;}
+    .toast{
+      position:fixed; right:18px; bottom:18px;
+      background:#111; color:#fff; padding:12px 14px;
+      border-radius:14px; box-shadow:0 12px 30px rgba(0,0,0,.22);
+      opacity:0; transform:translateY(10px);
+      transition:opacity .22s ease, transform .22s ease;
+      z-index:10000;
+      font-size:13px; font-weight:700;
+    }
+    .toast.show{opacity:1; transform:translateY(0);}
+    .toast.ok{background:#0f7a3a;}
+    .toast.err{background:#b3261e;}
+
+    @media (max-width: 900px){
+      .wrap{grid-template-columns:1fr;}
+      .brand{gap:12px;}
+      .logo{height:40px;}
+      .titles h1{font-size:20px;}
+      .topicGrid{grid-template-columns:1fr;}
+    }
+  </style>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="BT_Service.jpg" alt="BTicino Servizi" class="logo">
+      <div class="titles">
+        <h1>FAQ – Videocitofonia: Estensione Garanzia &amp; KASKO</h1>
+        <p>Cerca una risposta o invia una domanda al team.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- Sidebar: SOLO categorie -->
+    <aside class="card">
+      <h3>Tematiche</h3>
+      <div class="meta" id="topicHint" style="margin-top:6px;">Seleziona prima un <strong>Topic</strong> a destra.</div>
+      <div class="cats" id="catButtons" style="margin-top:8px;"></div>
+    </aside>
+
+    <!-- Contenuti -->
+    <main>
+      <div class="card">
+        <div class="search">
+          <input id="q" type="search" placeholder="Cerca: KASKO, estensione, garanzia, vandalismo, fulmine, condominio..." disabled />
+          <button id="resetBtn" type="button" disabled>Reset</button>
+          <button id="changeTopicBtn" type="button" style="display:none;">Cambia Topic</button>
+        </div>
+        <div class="meta" id="count"></div>
+      </div>
+
+      <!-- Topic selector (VISIBILE all’avvio, al posto delle FAQ) -->
+      <div id="topicSelector" class="card" style="margin-top:14px;">
+        <h3 style="margin:0 0 8px 0;">Scegli un Topic</h3>
+        <div class="meta" style="margin-top:0;margin-bottom:12px;">
+          Seleziona un Topic per vedere le FAQ relative (poi potrai filtrare per Tematica e cercare).
+        </div>
+
+        <div class="topicGrid">
+          <button class="topicBtn" type="button" data-topic="BT-4390">
+            <div class="topicTitle">Estensione di Garanzia</div>
+            <div class="topicCode">(art. BT-4390)</div>
+          </button>
+
+          <button class="topicBtn" type="button" data-topic="BT-KASKO13V">
+            <div class="topicTitle">KASKO Videocitofonia</div>
+            <div class="topicCode">(art. BT-KASKO13V)</div>
+          </button>
+        </div>
+      </div>
+
+      <div id="faqList" class="hidden"></div>
+
+      <!-- CTA: SOLO testo + bottone (il form è nel popup) -->
+      <div class="card" style="margin-top:14px;">
+        <div class="footer-cta">
+          <div>
+            <strong>Non hai trovato la risposta?</strong><br/>
+            <span class="meta">Invia la domanda: riceverai riscontro via email.</span>
+          </div>
+          <button type="button" id="openFormBtn">Fai una domanda</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- POPUP form -->
+  <div id="modalOverlay" class="modalOverlay hidden" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modalHeader">
+        <div id="modalTitle" class="title">Invia una domanda</div>
+        <button id="closeModalBtn" class="closeX" type="button" aria-label="Chiudi">
+          <span></span>
+        </button>
+      </div>
+      <div class="modalBody">
+        <div id="msgBox" class="hidden" style="margin-bottom:12px;"></div>
+
+        <form id="askForm">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <input id="name" name="name" placeholder="Nome e Cognome" required />
+            <input id="email" name="email" type="email" placeholder="Email" required />
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px;">
+            <select id="role" name="role" required>
+              <option value="">Ruolo…</option>
+              <option>Installatore</option>
+              <option>Commerciale</option>
+              <option>Cliente finale</option>
+              <option>Altro</option>
+            </select>
+
+            <select id="category" name="category" required>
+              <option value="">Categoria…</option>
+            </select>
+          </div>
+
+          <textarea id="message" name="message" placeholder="Scrivi qui la tua domanda…" rows="4" style="margin-top:10px;" required></textarea>
+
+          <div style="display:flex; gap:10px; margin-top:10px; align-items:center;">
+            <button id="sendBtn" type="submit" style="background:var(--bt-orange);color:#111;">Invia</button>
+            <span class="meta" id="sendHint"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // ====== CONFIG EMAILJS (stessi parametri della prima pagina) ======
+    const EMAILJS_PUBLIC_KEY = "vroneqwVOfxcazawc";
+    const EMAILJS_SERVICE_ID = "Sicuri_&_Connessi";
+    const EMAILJS_TEMPLATE_ID = "template_sjl0d24";
+
+    // File email autorizzate (solo invio domande)
+    const ALLOWED_EMAILS_URL = "./allowed_emails.json";
+
+    // File FAQ di questa pagina
+    const FAQS_URL = "./faqs.json";
+
+    // Inizializza EmailJS
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    // ====== Helpers ======
+    function normalizeEmail(email){ return (email || "").trim().toLowerCase(); }
+    function toast(type, text){
+      const t = document.getElementById("toast");
+      t.className = "toast " + (type === "ok" ? "ok" : "err");
+      t.textContent = text;
+      t.classList.add("show");
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => t.classList.remove("show"), 2600);
+    }
+
+    // ====== Stato UI ======
+    const state = { faqs: [], topic: null, category: "Tutte", query: "" };
+
+    const topicHint = document.getElementById("topicHint");
+    const topicSelector = document.getElementById("topicSelector");
+    const topicBtns = Array.from(document.querySelectorAll(".topicBtn"));
+
+    const catButtons = document.getElementById("catButtons");
+    const faqList = document.getElementById("faqList");
+    const q = document.getElementById("q");
+    const resetBtn = document.getElementById("resetBtn");
+    const count = document.getElementById("count");
+    const changeTopicBtn = document.getElementById("changeTopicBtn");
+
+    const catSelect = document.getElementById("category"); // dropdown del form
+
+    function uniq(arr){ return [...new Set(arr)].sort(); }
+
+    function getVisibleFaqs(){
+      return state.faqs.filter(f => (state.topic ? f.topic_code === state.topic : false));
+    }
+
+    function matches(faq){
+      const inCat = (state.category === "Tutte") || (faq.category === state.category);
+      const query = state.query.trim().toLowerCase();
+      if(!query) return inCat;
+      const hay = (faq.question + " " + faq.answer + " " + (faq.tags || []).join(" ")).toLowerCase();
+      return inCat && hay.includes(query);
+    }
+
+    function renderCategories(categories){
+      catButtons.innerHTML = "";
+      const all = ["Tutte", ...categories];
+
+      all.forEach(c => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = c;
+        b.className = (state.category === c) ? "active" : "";
+        b.onclick = () => { state.category = c; render(); renderCategories(categories); };
+        catButtons.appendChild(b);
+      });
+
+      catSelect.innerHTML = `<option value="">Categoria…</option>` + categories
+        .map(c => `<option value="${c}">${c}</option>`).join("");
+    }
+
+    function render(){
+      if(!state.topic){
+        count.textContent = "";
+        faqList.classList.add("hidden");
+        topicSelector.classList.remove("hidden");
+        topicHint.style.display = "";
+        q.disabled = true;
+        resetBtn.disabled = true;
+        changeTopicBtn.style.display = "none";
+        catButtons.innerHTML = "";
+        catSelect.innerHTML = `<option value="">Categoria…</option>`;
+        return;
+      }
+
+      // topic selezionato -> mostra FAQ
+      topicSelector.classList.add("hidden");
+      faqList.classList.remove("hidden");
+      topicHint.style.display = "none";
+      q.disabled = false;
+      resetBtn.disabled = false;
+      changeTopicBtn.style.display = "";
+
+      const base = getVisibleFaqs();
+      const filtered = base.filter(matches);
+
+      count.textContent = `Risultati: ${filtered.length} / ${base.length} • Topic: ${state.topic}`;
+
+      faqList.innerHTML = filtered.map(f => `
+        <details>
+          <summary>${f.question}</summary>
+          <div style="margin-top:10px;">${f.answer}</div>
+          <div class="meta" style="margin-top:10px;">
+            <span class="badge">${f.category}</span>
+            ${(f.tags || []).map(t => `<span class="badge">${t}</span>`).join("")}
+          </div>
+        </details>
+      `).join("") || `<div class="card">Nessun risultato. Prova con altre parole o cambia Tematica.</div>`;
+    }
+
+    function selectTopic(topicCode){
+      state.topic = topicCode;
+      state.category = "Tutte";
+      state.query = "";
+      q.value = "";
+      topicBtns.forEach(b => b.classList.toggle("active", b.dataset.topic === topicCode));
+
+      const visible = getVisibleFaqs();
+      const categories = uniq(visible.map(f => f.category).filter(Boolean));
+      renderCategories(categories);
+      render();
+    }
+
+    function clearTopic(){
+      state.topic = null;
+      state.category = "Tutte";
+      state.query = "";
+      q.value = "";
+      topicBtns.forEach(b => b.classList.remove("active"));
+      render();
+    }
+
+    // ====== Init FAQ ======
+    async function initFaq(){
+      try{
+        const res = await fetch(FAQS_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error("HTTP " + res.status + " nel caricamento di " + FAQS_URL);
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error("faqs.json non è un array JSON");
+
+        state.faqs = data;
+
+        // Eventi search/reset
+        q.addEventListener("input", () => { state.query = q.value; render(); });
+        resetBtn.onclick = () => {
+          state.category = "Tutte";
+          state.query = "";
+          q.value = "";
+          const visible = getVisibleFaqs();
+          const categories = uniq(visible.map(f => f.category).filter(Boolean));
+          renderCategories(categories);
+          render();
+        };
+
+        changeTopicBtn.onclick = () => clearTopic();
+
+        // Topic buttons
+        topicBtns.forEach(btn => {
+          btn.addEventListener("click", () => selectTopic(btn.dataset.topic));
+        });
+
+        render(); // view iniziale
+      } catch(e){
+        console.error(e);
+        topicSelector.innerHTML = `<strong>Errore caricamento FAQ</strong><div class="meta" style="margin-top:6px;">${e.message}</div>`;
+        count.textContent = "Impossibile caricare le FAQ.";
+      }
+    }
+
+    initFaq();
+
+    // ====== Allowed emails (solo invio domande) ======
+    let ALLOWED_EMAILS = null;
+
+    async function loadAllowedEmails(){
+      try{
+        const res = await fetch(ALLOWED_EMAILS_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error("allowed_emails.json non è un array");
+        ALLOWED_EMAILS = new Set(data.map(e => normalizeEmail(e)));
+      } catch(err){
+        console.error(err);
+        ALLOWED_EMAILS = null;
+      }
+    }
+    loadAllowedEmails();
+
+    // ====== Popup form ======
+    const openFormBtn = document.getElementById("openFormBtn");
+    const modalOverlay = document.getElementById("modalOverlay");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    const askForm = document.getElementById("askForm");
+    const msgBox = document.getElementById("msgBox");
+    const sendBtn = document.getElementById("sendBtn");
+    const sendHint = document.getElementById("sendHint");
+
+    function showMsg(type, text){
+      msgBox.className = type === "ok" ? "ok" : "err";
+      msgBox.textContent = text;
+      msgBox.classList.remove("hidden");
+    }
+
+    function openModal(){
+      msgBox.classList.add("hidden");
+      modalOverlay.classList.remove("hidden");
+      modalOverlay.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal(){
+      modalOverlay.classList.add("hidden");
+      modalOverlay.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    }
+
+    openFormBtn.onclick = openModal;
+
+    // Chiudi SOLO con X (non clic overlay)
+    closeModalBtn.onclick = closeModal;
+
+    // ESC chiude
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && !modalOverlay.classList.contains("hidden")) closeModal();
+    });
+
+    // ====== Invio domanda ======
+    askForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msgBox.classList.add("hidden");
+
+      const email = normalizeEmail(document.getElementById("email").value);
+
+      // 1) controllo domini (extra sicurezza "soft")
+      const allowedDomains = ["bticino.com","legrand.com","legrand-ext.com"];
+      const domain = (email.split("@")[1] || "");
+      if(!allowedDomains.includes(domain)){
+        showMsg("err", "Invio non consentito: usa un indirizzo email aziendale BTicino/Legrand.");
+        toast("err","Email non autorizzata");
+        return;
+      }
+
+      // 2) controllo whitelist (se disponibile)
+      if(ALLOWED_EMAILS === null){
+        showMsg("err", "Errore nel caricamento utenti autorizzati. Invio disabilitato.");
+        toast("err","Invio disabilitato");
+        return;
+      }
+      if(!ALLOWED_EMAILS.has(email)){
+        showMsg("err", "Invio non consentito: questa email non è autorizzata. Usa la tua email aziendale BTicino/Legrand.");
+        toast("err","Email non in lista");
+        return;
+      }
+
+      sendBtn.disabled = true;
+      sendHint.textContent = "Invio in corso…";
+
+      const payload = {
+        name: document.getElementById("name").value.trim(),
+        email: email,
+        role: document.getElementById("role").value,
+        category: document.getElementById("category").value,
+        message: document.getElementById("message").value.trim(),
+        time: new Date().toLocaleString("it-IT"),
+        page: window.location.href
+      };
+
+      try{
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
+
+        showMsg("ok", "Grazie! La tua domanda è stata inviata correttamente. Premi OK per chiudere.");
+        toast("ok","Domanda inviata");
+
+        // chiudi solo dopo OK
+        const okBtn = document.createElement("button");
+        okBtn.type = "button";
+        okBtn.textContent = "OK";
+        okBtn.style.marginTop = "10px";
+        okBtn.style.background = "var(--bt-orange)";
+        okBtn.style.color = "#111";
+        okBtn.onclick = () => {
+          askForm.reset();
+          msgBox.classList.add("hidden");
+          closeModal();
+          okBtn.remove();
+        };
+        msgBox.appendChild(document.createElement("div")).appendChild(okBtn);
+
+      }catch(err){
+        console.error(err);
+        showMsg("err", "Errore durante l’invio. Riprova.");
+        toast("err","Errore invio");
+      }finally{
+        sendBtn.disabled = false;
+        sendHint.textContent = "";
+      }
+    });
+  </script>
+</body>
+</html>
