@@ -179,6 +179,7 @@
       color:#991b1b;
       font-weight:700;
       display:none;
+      white-space:pre-line;
     }
 
     .faq-list{margin-top:12px; display:flex; flex-direction:column; gap:12px;}
@@ -296,7 +297,7 @@
     .topicbar .current strong{font-size:14px}
     .topicbar .current span{font-size:12px; color:var(--muted); font-weight:800}
 
-    /* Modal */
+    /* Ask Modal */
     .overlay{
       position:fixed; inset:0;
       background:rgba(0,0,0,.50);
@@ -386,6 +387,7 @@
       font-weight:700;
     }
 
+    /* Toast (con OK, resta finché non clicchi) */
     .toast{
       position:fixed;
       right:16px;
@@ -414,7 +416,7 @@
       cursor:pointer;
     }
 
-    /* Simple OK dialog overlay */
+    /* OK dialog overlay (centrale) */
     .okoverlay{
       position:fixed; inset:0;
       display:none;
@@ -458,9 +460,7 @@
         <h3 class="side-title">Tematiche</h3>
         <p id="sideHint" class="side-hint">Seleziona prima un <b>Topic</b> a destra.</p>
 
-        <div class="pilllist" id="catList">
-          <!-- categorie -->
-        </div>
+        <div class="pilllist" id="catList"></div>
       </aside>
 
       <!-- MAIN -->
@@ -483,7 +483,7 @@
         <div id="resultsLine" class="resultsline"></div>
         <div id="msgBox" class="msg"></div>
 
-        <!-- TOPIC chooser (shown before selecting a topic) -->
+        <!-- TOPIC chooser -->
         <div id="topicChooser" class="topic-chooser" aria-label="Selezione topic">
           <button class="topiccard" type="button" data-topic="estensione">
             <div class="t-title">Estensione di Garanzia</div>
@@ -518,7 +518,6 @@
       <div class="modal-header">
         <h3 id="modalTitle">Invia una domanda</h3>
         <button id="closeAskBtn" class="close" type="button" aria-label="Chiudi">
-          <!-- animated X (rotation on hover) -->
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
             <path d="M18 6L6 18"></path>
             <path d="M6 6l12 12"></path>
@@ -548,7 +547,6 @@
                 <option>FTC S.T.</option>
                 <option>Personale_Interno</option>
                 <option>Altro</option>
-
               </select>
             </div>
             <div class="field">
@@ -574,16 +572,16 @@
     </div>
   </div>
 
-  <!-- MINI TOAST -->
-  <div id="toast" class="toast">
-    <span id="toastText">Inviato ✔</span>
+  <!-- MINI TOAST (con OK) -->
+  <div id="toast" class="toast" aria-hidden="true">
+    <span id="toastText">Domanda inviata ✔</span>
     <button id="toastOk" class="ok" type="button">OK</button>
   </div>
 
-  <!-- OK DIALOG (closes popup only after OK) -->
+  <!-- OK DIALOG (centrale) -->
   <div id="okOverlay" class="okoverlay" aria-hidden="true">
     <div class="okcard">
-      <h4 id="okTitle">Messaggio inviato</h4>
+      <h4 id="okTitle">Domanda inviata</h4>
       <p id="okText">Grazie! Abbiamo ricevuto la tua richiesta. Ti risponderemo via email.</p>
       <div class="okactions">
         <button id="okBtn" class="btn orange" type="button">OK</button>
@@ -596,7 +594,7 @@
     const FAQS_URL = "./faqs.json";
     const ALLOWED_EMAILS_URL = "./allowed_emails.json";
 
-    // EmailJS (modifica se necessario)
+    // EmailJS
     const EMAILJS_PUBLIC_KEY = "vroneqwVOfxcazawc";
     const EMAILJS_SERVICE_ID = "Sicuri_&_Connessi";
     const EMAILJS_TEMPLATE_ID = "template_sjl0d24";
@@ -635,9 +633,13 @@
 
     // Toast + OK overlay
     const toast = el("toast");
+    const toastText = el("toastText");
     const toastOk = el("toastOk");
     const okOverlay = el("okOverlay");
     const okBtn = el("okBtn");
+
+    // Flag: se vero, non permettere chiusura del form finché non clicchi OK
+    let waitingOk = false;
 
     // =================== HELPERS ===================
     function showMsg(text){
@@ -781,7 +783,6 @@
     }
 
     function formatAnswer(answer){
-      // support simple bullet list: lines starting with "- "
       const lines = (answer || "").split("\n");
       const hasBullets = lines.some(l => l.trim().startsWith("- "));
       if(!hasBullets){
@@ -838,7 +839,6 @@
       searchInput.value = "";
       hideMsg();
       renderAll();
-      // scroll to top of main card
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -882,7 +882,6 @@
         allowedEmails = new Set(list.map(normalizeEmail));
       }catch(err){
         allowedEmails = new Set();
-        // Non blocco l'app: la validazione email rimane su dominio
         authNote.textContent = "Nota: impossibile caricare la whitelist email. Verrà applicato solo il controllo dominio BTicino/Legrand.";
       }
     }
@@ -900,17 +899,22 @@
       renderAll();
     });
 
-    // =================== ASK MODAL ===================
+    // =================== ASK MODAL (meccanica come la prima pagina) ===================
     function openModal(){
       overlay.style.display = "flex";
       requestAnimationFrame(() => overlay.classList.add("show"));
       overlay.setAttribute("aria-hidden", "false");
       hideMsg();
-      // prefill category options from current topic
+
       renderCategories();
-      // auth hint
       authNote.textContent = "Invio consentito solo da email aziendali BTicino/Legrand e, se presente, nella whitelist.";
+
+      // reset stato conferma
+      waitingOk = false;
+      hideToast();
+      hideOkDialog();
     }
+
     function closeModal(){
       overlay.classList.remove("show");
       overlay.setAttribute("aria-hidden", "true");
@@ -918,30 +922,38 @@
     }
 
     openAskBtn.addEventListener("click", openModal);
-    closeAskBtn.addEventListener("click", closeModal);
+    closeAskBtn.addEventListener("click", () => {
+      if(waitingOk) return; // blocca chiusura finché non premi OK
+      closeModal();
+    });
 
     overlay.addEventListener("click", (e) => {
-      // click outside modal closes (only if not waiting OK)
-      if(e.target === overlay && okOverlay.style.display !== "flex"){
+      if(waitingOk) return;
+      if(e.target === overlay) closeModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && overlay.classList.contains("show")){
+        if(waitingOk) return;
         closeModal();
       }
     });
 
-    // Toast
+    // Toast (resta finché non clicchi OK)
     function showToast(text){
-      el("toastText").textContent = text || "Operazione completata";
+      toastText.textContent = text || "Domanda inviata ✔";
       toast.classList.add("show");
       toast.style.display = "flex";
+      toast.setAttribute("aria-hidden","false");
     }
     function hideToast(){
       toast.classList.remove("show");
       toast.style.display = "none";
+      toast.setAttribute("aria-hidden","true");
     }
-    toastOk.addEventListener("click", hideToast);
 
-    // OK dialog (blocks closing of ask popup until OK)
+    // OK dialog (centrale) -> chiude SOLO dopo OK
     function showOkDialog(){
-      rememberedClose = closeModal;
       okOverlay.style.display = "flex";
       okOverlay.setAttribute("aria-hidden","false");
     }
@@ -950,11 +962,17 @@
       okOverlay.setAttribute("aria-hidden","true");
     }
 
+    // Stesso bottone OK per chiudere toast (se vuoi chiuderlo anche separatamente)
+    toastOk.addEventListener("click", () => {
+      // qui NON chiudo il form: lo farà l'OK centrale
+      hideToast();
+    });
+
     okBtn.addEventListener("click", () => {
       hideOkDialog();
-      // only now close the ask popup
+      hideToast();
+      waitingOk = false;
       closeModal();
-      // reset form
       askForm.reset();
     });
 
@@ -964,23 +982,10 @@
       return ["bticino.com","legrand.com","legrand-ext.com"].includes(d);
     }
 
-    function isAllowedEmail(email){
-      const n = normalizeEmail(email);
-      if(!n) return false;
-      // if whitelist loaded and non-empty: require match
-      if(allowedEmails && allowedEmails.size > 0){
-        return allowedEmails.has(n);
-      }
-      // fallback: only domain check
-      return isAllowedDomain(n);
-    }
-
     function initEmailJS(){
       try{
         emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-      }catch(e){
-        // ignore
-      }
+      }catch(e){ /* ignore */ }
     }
 
     askForm.addEventListener("submit", async (e) => {
@@ -1000,22 +1005,20 @@
         showMsg("Invio non consentito: questa email non è autorizzata. Usa la tua email aziendale BTicino/Legrand.");
         return;
       }
-
       if(!selectedTopicKey){
         showMsg("Seleziona un Topic prima di inviare la domanda.");
         return;
       }
 
-      // prepare payload
-    const payload = {
-  to_email: ADMIN_TO_EMAIL, // la tua mail fissa (destinatario)
-  from_name: name,          // valore già letto sopra
-  from_email: email,        // valore già letto sopra (normalizzato)
-  role: role,
-  category: category,
-  message: question,        // <-- qui prende il testo dal textarea id="question"
-  time: new Date().toLocaleString("it-IT")
-};
+      const payload = {
+        to_email: ADMIN_TO_EMAIL,
+        from_name: name,
+        from_email: email,
+        role: role,
+        category: category,
+        message: question,
+        time: new Date().toLocaleString("it-IT")
+      };
 
       try{
         sendBtn.disabled = true;
@@ -1024,8 +1027,14 @@
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
 
         hideMsg();
+
+        // MECCANICA RICHIESTA:
+        // - mostra toast + ok overlay
+        // - blocca chiusura finché non si preme OK
+        waitingOk = true;
         showToast("Domanda inviata ✔");
-        showOkDialog(); // popup closes only after OK
+        showOkDialog();
+
       }catch(err){
         showMsg("Errore nell'invio. Riprova o contatta il team.\n" + String(err?.text || err?.message || err));
       }finally{
