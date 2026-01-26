@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ – Videocitofonia: Estensione Garanzia & KASKO</title>
+
+  <style>
+    :root{
+      --bt-orange: #ff6a00;
+      --bt-black: #0f0f10;
+      --bt-white: #ffffff;
+      --bg: #f4f5f7;
+      --card-border: rgba(15,15,16,.08);
+      --shadow: 0 10px 30px rgba(15,15,16,.08);
+      --radius: 14px;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      font-family: Arial, sans-serif;
+      margin:0;
+      background: var(--bg);
+      color: var(--bt-black);
+    }
+
+    /* ===== TOP BAR (BIANCO + LOGO) ===== */
+    header.topbar{
+      background: #ffffff;
+      color: #111;
+      padding: 14px 24px;
+      border-bottom: 6px solid var(--bt-orange);
+    }
+
+    .brand{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      max-width: none;
+      margin: 0;
+    }
+
+    .logo{
+      height: 46px;
+      width: auto;
+      display: block;
+    }
+
+    .titles h1{
+      margin: 0 0 2px 0;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: .2px;
+    }
+
+    .titles p{
+      margin: 0;
+      font-size: 13px;
+      opacity: .92;
+    }
+
+    /* ===== LAYOUT ===== */
+    .wrap{
+      display:grid;
+      grid-template-columns: 280px 1fr;
+      gap:18px;
+      padding:18px;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .card{
+      background: var(--bt-white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:16px;
+      border:1px solid var(--card-border);
+    }
+
+    .search{display:flex; gap:10px; align-items:center;}
+
+    input, select, textarea{
+      width:100%;
+      padding:11px 12px;
+      border:1px solid rgba(15,15,16,.14);
+      border-radius: 12px;
+      outline:none;
+      background: #fff;
+    }
+
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(255,106,0,.65);
+      box-shadow: 0 0 0 3px rgba(255,106,0,.15);
+    }
+
+    button{
+      padding:10px 14px;
+      border:0;
+      border-radius: 12px;
+      background: var(--bt-black);
+      color: var(--bt-white);
+      cursor:pointer;
+      font-weight: 700;
+    }
+    button:hover{filter: brightness(1.05);}
+    button:disabled{opacity:.5; cursor:not-allowed;}
+
+    #resetBtn{
+      background: transparent;
+      color: var(--bt-black);
+      border:1px solid rgba(15,15,16,.18);
+    }
+    #resetBtn:hover{
+      border-color: rgba(255,106,0,.65);
+      box-shadow: 0 0 0 3px rgba(255,106,0,.12);
+    }
+
+    /* ===== SIDEBAR CATEGORIE ===== */
+    .cats button{
+      width:100%;
+      text-align:left;
+      background:#fff;
+      color: var(--bt-black);
+      border:1px solid rgba(15,15,16,.12);
+      margin:8px 0;
+      font-weight:700;
+      position:relative;
+    }
+    .cats button:hover{
+      border-color: rgba(255,106,0,.65);
+    }
+    .cats button.active{
+      background: rgba(255,106,0,.10);
+      border-color: rgba(255,106,0,.75);
+      color: var(--bt-black);
+    }
+    .cats button.active::before{
+      content:"";
+      position:absolute;
+      left:0; top:0; bottom:0;
+      width:6px;
+      background: var(--bt-orange);
+      border-top-left-radius: 12px;
+      border-bottom-left-radius: 12px;
+    }
+
+    /* ===== TOPIC SELECTOR (NEL MAIN) ===== */
+    .topicGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      margin-top: 8px;
+    }
+    .topicBtn{
+      width:100%;
+      text-align:left;
+      background:#fff;
+      color: var(--bt-black);
+      border:1px solid rgba(15,15,16,.12);
+      border-radius: 16px;
+      padding:16px;
+      box-shadow: var(--shadow);
+      cursor:pointer;
+      transition: transform .08s ease, border-color .12s ease;
+    }
+    .topicBtn:hover{
+      border-color: rgba(255,106,0,.65);
+      transform: translateY(-1px);
+    }
+    .topicBtn .tTitle{
+      font-size: 16px;
+      font-weight: 900;
+      margin:0;
+      line-height: 1.2;
+    }
+    .topicBtn .tCode{
+      margin-top: 4px;
+      font-size: 13px;
+      opacity: .8;
+      font-weight: 700;
+    }
+    .topicBtn .tHint{
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: .8;
+      line-height: 1.35;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(15,15,16,.12);
+      background: #fff;
+      font-size:12px;
+      font-weight:800;
+    }
+    .pill .dot{
+      width:8px; height:8px; border-radius:50%;
+      background: var(--bt-orange);
+    }
+
+    details{
+      border:1px solid rgba(15,15,16,.10);
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin: 12px 0;
+      background: #fff;
+      overflow:hidden;
+    }
+    summary{
+      cursor:pointer;
+      font-weight: 800;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    summary::before{
+      content:"";
+      display:inline-block;
+      width:10px; height:10px;
+      border-right:2px solid var(--bt-orange);
+      border-bottom:2px solid var(--bt-orange);
+      transform: rotate(-45deg);
+      margin-right:10px;
+      position: relative;
+      top:-1px;
+    }
+    details[open] summary::before{
+      transform: rotate(45deg);
+      top:-2px;
+    }
+
+    .meta{
+      font-size:12px;
+      opacity:.75;
+      margin-top:8px;
+    }
+
+    .badge{
+      display:inline-block;
+      font-size:12px;
+      padding:5px 10px;
+      border-radius:999px;
+      background: rgba(255,106,0,.10);
+      color: var(--bt-black);
+      border:1px solid rgba(255,106,0,.35);
+      margin-right:6px;
+      margin-top:6px;
+    }
+
+    .footer-cta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+
+    #openFormBtn{
+      background: var(--bt-orange);
+      color: #111;
+    }
+    #openFormBtn:hover{filter: brightness(1.02);}
+
+    /* popup / toast (come prima pagina) */
+    .overlay{
+      position: fixed;
+      inset: 0;
+      background: rgba(15,15,16,.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 999;
+    }
+    .overlay.show{display:flex;}
+
+    .modal{
+      width: min(760px, 100%);
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(15,15,16,.25);
+      border:1px solid rgba(15,15,16,.10);
+      overflow: hidden;
+      transform: translateY(6px);
+      animation: popIn .18s ease-out forwards;
+    }
+    @keyframes popIn{
+      from{opacity: 0; transform: translateY(14px) scale(.98);}
+      to{opacity: 1; transform: translateY(0) scale(1);}
+    }
+    .modalHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding: 14px 16px;
+      background: rgba(255,106,0,.10);
+      border-bottom: 1px solid rgba(15,15,16,.08);
+    }
+    .modalHead .title{
+      font-weight: 900;
+    }
+    .xBtn{
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(15,15,16,.15);
+      background: #fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    .xBtn:hover{border-color: rgba(255,106,0,.65);}
+    .xBtn::before,
+    .xBtn::after{
+      content:"";
+      position:absolute;
+      width: 16px;
+      height: 2px;
+      background: var(--bt-black);
+      border-radius: 2px;
+      transition: transform .18s ease;
+    }
+    .xBtn::before{transform: rotate(45deg);}
+    .xBtn::after{transform: rotate(-45deg);}
+    .xBtn:hover::before{transform: rotate(55deg);}
+    .xBtn:hover::after{transform: rotate(-55deg);}
+
+    .modalBody{padding: 16px;}
+    .modalBody .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .modalBody .grid2 + .grid2{margin-top:10px;}
+
+    #sendBtn{
+      background: var(--bt-orange);
+      color:#111;
+    }
+
+    .hidden{display:none;}
+    .ok{background:#e9fff0; border:1px solid #b7f0c9; padding:10px; border-radius:12px;}
+    .err{background:#ffecec; border:1px solid #ffbcbc; padding:10px; border-radius:12px;}
+
+    .toast{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      background:#111;
+      color:#fff;
+      padding: 12px 14px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(15,15,16,.25);
+      display:none;
+      z-index: 1000;
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .toast.show{
+      display:block;
+      animation: toastIn .18s ease-out;
+    }
+    @keyframes toastIn{
+      from{opacity:0; transform: translateY(10px);}
+      to{opacity:1; transform: translateY(0);}
+    }
+
+    @media (max-width: 900px){
+      .wrap{grid-template-columns: 1fr; }
+      .brand{gap: 12px;}
+      .logo{height: 40px;}
+      .titles h1{font-size: 20px;}
+      .topicGrid{grid-template-columns: 1fr;}
+      .modalBody .grid2{grid-template-columns: 1fr;}
+    }
+  </style>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <img src="BT_Service.jpg" alt="BTicino Servizi" class="logo">
+      <div class="titles">
+        <h1>FAQ – Videocitofonia: Estensione Garanzia &amp; KASKO</h1>
+        <p>Cerca una risposta o invia una domanda al team.</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <!-- Sidebar categorie -->
+    <aside class="card">
+      <h3>Tematiche</h3>
+      <div class="cats" id="catButtons"></div>
+      <div class="meta" id="catHint" style="margin-top:10px;">
+        Seleziona prima un <strong>Topic</strong> per vedere le categorie.
+      </div>
+    </aside>
+
+    <!-- Contenuti -->
+    <main>
+      <div class="card">
+        <div class="search">
+          <input id="q" type="search" placeholder="Cerca: KASKO, estensione, garanzia, vandalismo, fulmine, condominio..." />
+          <button id="resetBtn" type="button">Reset</button>
+        </div>
+        <div class="meta" id="count"></div>
+      </div>
+
+      <!-- TOPIC SELECTOR (quando topic non è scelto) -->
+      <div class="card" id="topicChooser">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+          <div>
+            <div class="pill"><span class="dot"></span>Seleziona un Topic</div>
+            <div class="meta" style="margin-top:6px;">Le FAQ verranno mostrate solo dopo la selezione.</div>
+          </div>
+        </div>
+
+        <div class="topicGrid" style="margin-top:14px;">
+          <div class="topicBtn" id="topicExtBtn">
+            <p class="tTitle">Estensione di Garanzia</p>
+            <div class="tCode">(art. BT-4390)</div>
+            <div class="tHint">Copertura legata a <strong>difettosità di fabbricazione</strong> fino a 5 anni (attivazione entro 12 mesi).</div>
+          </div>
+
+          <div class="topicBtn" id="topicKaskoBtn">
+            <p class="tTitle">KASKO Videocitofonia</p>
+            <div class="tCode">(art. BT-KASKO13V)</div>
+            <div class="tHint">Protezione da <strong>atti vandalici</strong>, <strong>sbalzi di tensione</strong>, <strong>eventi atmosferici</strong> e altri danni accidentali.</div>
+          </div>
+        </div>
+
+        <div class="meta" style="margin-top:14px;">
+          Nota: la domanda <strong>“Qual è la differenza tra Estensione Garanzia e KASKO?”</strong> è visibile in entrambi i Topic.
+        </div>
+      </div>
+
+      <div id="faqList"></div>
+
+      <div class="card">
+        <div class="footer-cta">
+          <div>
+            <strong>Non hai trovato la risposta?</strong><br/>
+            <span class="meta">Invia la domanda: riceverai riscontro via email.</span>
+          </div>
+          <button type="button" id="openFormBtn">Fai una domanda</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- POPUP FORM -->
+  <div class="overlay" id="overlay">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modalHead">
+        <div class="title" id="modalTitle">Invia una domanda</div>
+        <button class="xBtn" id="closeModalBtn" type="button" aria-label="Chiudi"></button>
+      </div>
+
+      <div class="modalBody">
+        <div id="msgBox" class="hidden"></div>
+
+        <form id="askForm">
+          <div class="grid2">
+            <input id="name" name="name" placeholder="Nome e Cognome" required />
+            <input id="email" name="email" type="email" placeholder="Email aziendale" required />
+          </div>
+
+          <div class="grid2">
+            <select id="role" name="role" required>
+              <option value="">Ruolo…</option>
+              <option>Installatore</option>
+              <option>Commerciale</option>
+              <option>Cliente finale</option>
+              <option>Altro</option>
+            </select>
+
+            <select id="category" name="category" required>
+              <option value="">Categoria…</option>
+            </select>
+          </div>
+
+          <textarea id="message" name="message" placeholder="Scrivi qui la tua domanda…" rows="4" style="margin-top:10px;" required></textarea>
+
+          <div style="display:flex; gap:10px; margin-top:10px; align-items:center; justify-content:space-between; flex-wrap:wrap;">
+            <div class="meta" id="sendHint"></div>
+            <button id="sendBtn" type="submit">Invia</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast">Inviato ✅</div>
+
+  <script>
+    // ====== CONFIG EMAILJS (riusa i tuoi parametri) ======
+    const EMAILJS_PUBLIC_KEY = "vroneqwVOfxcazawc";
+    const EMAILJS_SERVICE_ID = "Sicuri_&_Connessi";
+    const EMAILJS_TEMPLATE_ID = "template_sjl0d24";
+
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+
+    // ====== STATO ======
+    const state = {
+      faqs: [],
+      topic: null,          // "Estensione di Garanzia" | "KASKO Videocitofonia" | null
+      category: "Tutte",
+      query: ""
+    };
+
+    // ====== ELEMENTI ======
+    const catButtons = document.getElementById("catButtons");
+    const catHint = document.getElementById("catHint");
+    const catSelect = document.getElementById("category");
+
+    const faqList = document.getElementById("faqList");
+    const q = document.getElementById("q");
+    const resetBtn = document.getElementById("resetBtn");
+    const count = document.getElementById("count");
+
+    const topicChooser = document.getElementById("topicChooser");
+    const topicExtBtn = document.getElementById("topicExtBtn");
+    const topicKaskoBtn = document.getElementById("topicKaskoBtn");
+
+    // popup
+    const overlay = document.getElementById("overlay");
+    const openFormBtn = document.getElementById("openFormBtn");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const askForm = document.getElementById("askForm");
+    const msgBox = document.getElementById("msgBox");
+    const sendBtn = document.getElementById("sendBtn");
+    const sendHint = document.getElementById("sendHint");
+    const toast = document.getElementById("toast");
+
+    // ====== UTIL ======
+    function uniq(arr){ return [...new Set(arr)].sort(); }
+
+    function normalizeEmail(email){
+      return (email || "").trim().toLowerCase();
+    }
+
+    function showToast(text){
+      toast.textContent = text;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    function showMsg(type, text){
+      msgBox.className = type === "ok" ? "ok" : "err";
+      msgBox.textContent = text;
+      msgBox.classList.remove("hidden");
+    }
+
+    // ====== TOPIC LOGIC ======
+    function topicMatches(faq){
+      if(!state.topic) return false;
+      const t = (faq.topic || "").toLowerCase();
+      if(t === "entrambi") return true;
+      return t === state.topic.toLowerCase();
+    }
+
+    function computeCategories(){
+      const filteredByTopic = state.faqs.filter(topicMatches);
+      const categories = uniq(filteredByTopic.map(f => f.category).filter(Boolean));
+      return categories;
+    }
+
+    function renderCategories(){
+      catButtons.innerHTML = "";
+      catSelect.innerHTML = `<option value="">Categoria…</option>`;
+
+      if(!state.topic){
+        catHint.innerHTML = `Seleziona prima un <strong>Topic</strong> per vedere le categorie.`;
+        return;
+      }
+
+      catHint.innerHTML = `Topic selezionato: <strong>${state.topic}</strong>`;
+
+      const categories = computeCategories();
+      const all = ["Tutte", ...categories];
+
+      all.forEach(c => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.textContent = c;
+        b.className = (state.category === c) ? "active" : "";
+        b.onclick = () => { state.category = c; render(); renderCategories(); };
+        catButtons.appendChild(b);
+      });
+
+      catSelect.innerHTML = `<option value="">Categoria…</option>` + categories
+        .map(c => `<option value="${c}">${c}</option>`).join("");
+    }
+
+    function matches(faq){
+      // topic
+      if(!topicMatches(faq)) return false;
+
+      // category
+      const inCat = (state.category === "Tutte") || (faq.category === state.category);
+
+      // query
+      const query = state.query.trim().toLowerCase();
+      if(!query) return inCat;
+
+      const hay = (faq.question + " " + faq.answer + " " + (faq.tags || []).join(" ")).toLowerCase();
+      return inCat && hay.includes(query);
+    }
+
+    function render(){
+      if(!state.topic){
+        // mostra solo la selezione topic
+        topicChooser.classList.remove("hidden");
+        faqList.innerHTML = "";
+        count.textContent = "";
+        return;
+      }
+
+      topicChooser.classList.add("hidden");
+
+      const filtered = state.faqs.filter(matches);
+      const totTopic = state.faqs.filter(topicMatches).length;
+
+      count.textContent = `Risultati: ${filtered.length} / ${totTopic} · Topic: ${state.topic}`;
+
+      faqList.innerHTML = filtered.map(f => `
+        <details>
+          <summary>${f.question}</summary>
+          <div style="margin-top:10px;">${f.answer}</div>
+          <div class="meta" style="margin-top:10px;">
+            <span class="badge">${f.category}</span>
+            ${(f.tags || []).map(t => `<span class="badge">${t}</span>`).join("")}
+          </div>
+        </details>
+      `).join("") || `<div class="card">Nessun risultato. Prova con altre parole o cambia categoria.</div>`;
+    }
+
+    // ====== INIT FAQ ======
+    async function init(){
+      try{
+        const res = await fetch("./faqs.json", { cache: "no-store" });
+        if(!res.ok) throw new Error("HTTP " + res.status + " nel caricamento di faqs.json");
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error("faqs.json non è un array JSON");
+
+        state.faqs = data;
+
+        // eventi ricerca
+        q.addEventListener("input", () => { state.query = q.value; render(); });
+
+        resetBtn.onclick = () => {
+          state.query = ""; q.value = "";
+          state.category = "Tutte";
+          // non resettiamo il topic per evitare frizione: l'utente può cambiare topic chiudendo la pagina o ricaricando
+          render();
+          renderCategories();
+        };
+
+        // topic selection
+        topicExtBtn.onclick = () => {
+          state.topic = "Estensione di Garanzia";
+          state.category = "Tutte";
+          state.query = ""; q.value = "";
+          renderCategories();
+          render();
+        };
+
+        topicKaskoBtn.onclick = () => {
+          state.topic = "KASKO Videocitofonia";
+          state.category = "Tutte";
+          state.query = ""; q.value = "";
+          renderCategories();
+          render();
+        };
+
+        // render iniziale (topic non selezionato)
+        renderCategories();
+        render();
+      } catch (e){
+        console.error(e);
+        faqList.innerHTML = `<div class="card err"><strong>Errore caricamento FAQ</strong><br/>${e.message}</div>`;
+        count.textContent = "Impossibile caricare le FAQ.";
+      }
+    }
+
+    init();
+
+    // ====== INVIO DOMANDA (email con whitelist) ======
+    let ALLOWED_EMAILS = null;
+
+    async function loadAllowedEmails(){
+      try{
+        const r = await fetch("./allowed_emails.json", { cache: "no-store" });
+        if(!r.ok) throw new Error("HTTP " + r.status);
+        const arr = await r.json();
+        if(!Array.isArray(arr)) throw new Error("allowed_emails.json non è un array");
+        ALLOWED_EMAILS = new Set(arr.map(e => String(e).trim().toLowerCase()));
+      }catch(err){
+        console.error(err);
+        ALLOWED_EMAILS = new Set();
+        showMsg("err", "Errore nel caricamento utenti autorizzati. Invio disabilitato.");
+        sendBtn.disabled = true;
+      }
+    }
+    loadAllowedEmails();
+
+    function openModal(){
+      msgBox.classList.add("hidden");
+      overlay.classList.add("show");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(force=false){
+      if(!force){
+        // Chiudi solo se l'utente ha premuto OK sul messaggio di successo
+        return;
+      }
+      overlay.classList.remove("show");
+      document.body.style.overflow = "";
+    }
+
+    openFormBtn.onclick = openModal;
+
+    // chiudi clic su overlay (fuori dal box)
+    overlay.addEventListener("click", (e) => {
+      if(e.target === overlay){
+        // non chiudiamo qui per evitare perdita dati non voluta
+      }
+    });
+
+    // X chiude SOLO se già inviato correttamente (cioè compare bottone OK)
+    closeModalBtn.onclick = () => {
+      // se è visibile il bottone OK (aggiunto dopo success), allora chiudi
+      const okBtn = document.getElementById("okCloseBtn");
+      if(okBtn){
+        closeModal(true);
+      }else{
+        showToast("Completa o invia la domanda 🙂");
+      }
+    };
+
+    askForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      msgBox.classList.add("hidden");
+
+      const email = normalizeEmail(document.getElementById("email").value);
+
+      if(ALLOWED_EMAILS && !ALLOWED_EMAILS.has(email)){
+        showMsg("err", "Invio non consentito: questa email non è autorizzata. Usa la tua email aziendale BTicino/Legrand.");
+        return;
+      }
+
+      sendBtn.disabled = true;
+      sendHint.textContent = "Invio in corso…";
+
+      const payload = {
+        name: document.getElementById("name").value.trim(),
+        email: email,
+        role: document.getElementById("role").value,
+        category: document.getElementById("category").value,
+        message: document.getElementById("message").value.trim(),
+        time: new Date().toLocaleString("it-IT"),
+        page: window.location.href,
+        topic: state.topic || ""
+      };
+
+      try{
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
+
+        // Messaggio + bottone OK che consente la chiusura
+        showMsg("ok", "Grazie! La tua domanda è stata inviata correttamente.");
+        showToast("Inviato ✅");
+
+        // Aggiungo bottone OK dentro al box (solo una volta)
+        if(!document.getElementById("okCloseBtn")){
+          const ok = document.createElement("button");
+          ok.id = "okCloseBtn";
+          ok.type = "button";
+          ok.textContent = "OK";
+          ok.style.marginTop = "10px";
+          ok.onclick = () => closeModal(true);
+          msgBox.appendChild(document.createElement("div")).appendChild(ok);
+        }
+
+        askForm.reset();
+      }catch(err){
+        console.error(err);
+        showMsg("err", "Errore durante l’invio. Riprova.");
+      }finally{
+        sendBtn.disabled = false;
+        sendHint.textContent = "";
+      }
+    });
+
+    // ESC: chiudi solo dopo OK
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && overlay.classList.contains("show")){
+        const okBtn = document.getElementById("okCloseBtn");
+        if(okBtn){
+          closeModal(true);
+        }else{
+          showToast("Completa o invia la domanda 🙂");
+        }
+      }
+    });
+  </script>
+</body>
+</html>
