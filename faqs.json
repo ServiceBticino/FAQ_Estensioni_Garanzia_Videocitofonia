@@ -1,122 +1,116 @@
 [
   {
-    "topic": "Entrambi",
-    "category": "Panoramica coperture",
-    "question": "Quali coperture post-vendita propone BTicino per gli impianti videocitofonici?",
-    "answer": "<p>BTicino propone <strong>due livelli di copertura post-vendita</strong>, pensati per garantire continuità di servizio e serenità nel tempo:</p><ul><li><strong>Estensione Garanzia Prodotto</strong>: prolunga la garanzia legale contro difetti di fabbricazione.</li><li><strong>Garanzia KASKO 1 anno</strong>: protegge l’impianto da danni accidentali ed eventi imprevisti non coperti dalla garanzia legale.</li></ul><p>I due servizi sono <strong>complementari</strong> e rispondono a esigenze diverse.</p>"
+    "id": "vdf-4390-001",
+    "topic": "Estensione di Garanzia (art. BT-4390)",
+    "category": "Panoramica",
+    "tags": ["estensione", "garanzia", "videocitofonia", "bt-4390"],
+    "question": "Che cos’è l’Estensione di Garanzia Videocitofonia (art. BT-4390)?",
+    "answer": "<p>L’<strong>Estensione di Garanzia Videocitofonia</strong> (art. <strong>BT-4390</strong>) estende la copertura dei prodotti del catalogo BTicino relativi ai <strong>sistemi citofonici e videocitofonici</strong>, indipendentemente dalla tecnologia (<strong>2 fili</strong> o <strong>IP</strong>).</p><p>È pensata per dare al cliente <strong>più anni di tranquillità</strong> sul corretto funzionamento dell’impianto.</p>"
   },
   {
-    "topic": "Entrambi",
-    "category": "Panoramica coperture",
-    "question": "Qual è la differenza tra Estensione Garanzia e Garanzia KASKO?",
-    "answer": "<p>La differenza principale riguarda <strong>il tipo di evento coperto</strong>:</p><ul><li><strong>Estensione Garanzia</strong> → copre difetti di fabbricazione e problemi riconducibili al prodotto.</li><li><strong>Garanzia KASKO</strong> → copre atti vandalici, sovratensioni, eventi atmosferici, fulmini e danni accidentali.</li></ul><p><strong>In sintesi:</strong><br>👉 l’Estensione tutela il prodotto<br>👉 la KASKO tutela l’impianto nella vita reale</p>"
+    "id": "vdf-4390-002",
+    "topic": "Estensione di Garanzia (art. BT-4390)",
+    "category": "Copertura",
+    "tags": ["copertura", "prodotti", "2 fili", "ip", "netatmo"],
+    "question": "Quali prodotti sono coperti dall’Estensione di Garanzia BT-4390?",
+    "answer": "<p>Sono coperti i prodotti del catalogo BTicino per sistemi <strong>citofonici e videocitofonici</strong> (2 fili o IP), tra cui:</p><ul><li><strong>pulsantiere / posti esterni</strong></li><li><strong>posti interni</strong></li><li><strong>accessori correlati</strong> (inclusi alimentatori e telecamere)</li><li><strong>telecamere da esterno del catalogo Netatmo</strong></li></ul>"
   },
   {
-    "topic": "Entrambi",
-    "category": "Panoramica coperture",
-    "question": "Posso attivare sia Estensione Garanzia che KASKO sullo stesso impianto?",
-    "answer": "<p>Sì. I due servizi possono essere <strong>attivati insieme</strong> perché coprono ambiti diversi e aumentano il livello di protezione complessiva dell’impianto.</p>"
-  },
-
-  {
-    "topic": "Estensione Garanzia (BT-4390)",
-    "category": "Estensione Garanzia",
-    "question": "Che cos’è l’Estensione Garanzia Videocitofonia BT-4390?",
-    "answer": "<p>È un servizio che <strong>estende la durata della garanzia legale fino a 5 anni</strong> dalla data di installazione dell’impianto, mantenendo gli stessi criteri e modalità operative della garanzia standard.</p>"
+    "id": "vdf-4390-003",
+    "topic": "Estensione di Garanzia (art. BT-4390)",
+    "category": "Esclusioni",
+    "tags": ["esclusioni", "batterie"],
+    "question": "Cosa è escluso dall’Estensione di Garanzia BT-4390?",
+    "answer": "<p>Sono escluse le <strong>batterie</strong> degli articoli BTicino: per le batterie è riconosciuta una copertura di <strong>1 anno</strong>.</p>"
   },
   {
-    "topic": "Estensione Garanzia (BT-4390)",
-    "category": "Estensione Garanzia",
-    "question": "Entro quando deve essere attivata l’estensione di garanzia?",
-    "answer": "<p>L’estensione deve essere <strong>attivata entro 12 mesi</strong> dalla data di installazione dell’impianto.</p>"
+    "id": "vdf-4390-004",
+    "topic": "Estensione di Garanzia (art. BT-4390)",
+    "category": "Durata e attivazione",
+    "tags": ["durata", "5 anni", "attivazione", "12 mesi"],
+    "question": "Quanto dura la BT-4390 e quando va attivata?",
+    "answer": "<p>La garanzia ha durata <strong>5 anni</strong> a partire dalla <strong>data di installazione</strong> dell’impianto.</p><p>Deve essere <strong>attivata entro 12 mesi</strong> dalla data di installazione.</p>"
   },
   {
-    "topic": "Estensione Garanzia (BT-4390)",
-    "category": "Estensione Garanzia",
-    "question": "Quali prodotti sono coperti dall’estensione di garanzia?",
-    "answer": "<p>Sono coperti tutti i prodotti BTicino relativi ai sistemi citofonici e videocitofonici, indipendentemente dalla tecnologia (2 fili o IP):</p><ul><li>Pulsantiere esterne</li><li>Posti interni</li><li>Accessori correlati (inclusi alimentatori)</li><li>Telecamere del catalogo BTicino</li><li>Telecamere da esterno del catalogo Netatmo</li></ul>"
-  },
-  {
-    "topic": "Estensione Garanzia (BT-4390)",
-    "category": "Estensione Garanzia",
-    "question": "Cosa è escluso dall’estensione di garanzia?",
-    "answer": "<ul><li>Batterie degli articoli BTicino (copertura 1 anno)</li><li>Prodotti installati fuori dal territorio italiano</li></ul><p><em>Italia, Repubblica di San Marino e Città del Vaticano sono inclusi.</em></p>"
+    "id": "vdf-4390-005",
+    "topic": "Estensione di Garanzia (art. BT-4390)",
+    "category": "Validità territoriale",
+    "tags": ["italia", "san marino", "vaticano"],
+    "question": "Dove è valida l’Estensione di Garanzia BT-4390?",
+    "answer": "<p>È valida per i sistemi installati sul territorio <strong>italiano</strong>, inclusi <strong>Repubblica di San Marino</strong> e <strong>Città del Vaticano</strong>.</p><p>Non si applica ad apparecchiature vendute o utilizzate al di fuori di questi territori.</p>"
   },
 
   {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Garanzia KASKO",
-    "question": "Che cos’è la Garanzia KASKO impianto videocitofonico?",
-    "answer": "<p>La Garanzia KASKO BTicino è un servizio di <strong>protezione estesa annuale</strong> pensato per chi desidera vivere l’impianto videocitofonico senza preoccupazioni, coprendo i danni non prevedibili che possono verificarsi durante l’utilizzo quotidiano.</p>"
+    "id": "vdf-kasko-001",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Panoramica",
+    "tags": ["kasko", "protezione", "danni", "bt-kasko13v"],
+    "question": "Che cos’è la Garanzia KASKO Videocitofonia (art. BT-KASKO13V)?",
+    "answer": "<p>La <strong>Garanzia KASKO BTicino</strong> (art. <strong>BT-KASKO13V</strong>) è un servizio di <strong>protezione estesa</strong> per chi vuole usare l’impianto videocitofonico con maggiore serenità.</p><p>Copre <strong>danni accidentali</strong> e <strong>eventi esterni</strong> che possono generare costi imprevisti e disservizi.</p>"
   },
   {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Garanzia KASKO",
-    "question": "Quali eventi copre la Garanzia KASKO?",
-    "answer": "<ul><li>Atti vandalici</li><li>Danni accidentali</li><li>Sbalzi di tensione e sovratensioni</li><li>Eventi atmosferici e fulmini</li></ul><p>Eventi non coperti dalla garanzia legale ma molto frequenti nella realtà.</p>"
+    "id": "vdf-kasko-002",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Copertura",
+    "tags": ["atti vandalici", "sovratensione", "fulmini", "eventi atmosferici"],
+    "question": "Quali danni copre KASKO BT-KASKO13V?",
+    "answer": "<p>KASKO copre in modo completo i <strong>danni accidentali</strong> all’impianto videocitofonico causati, ad esempio, da:</p><ul><li><strong>atti vandalici</strong></li><li><strong>sbalzi di tensione</strong></li><li><strong>eventi atmosferici</strong></li><li><strong>fulmini</strong></li></ul><p><strong>Nota:</strong> restano escluse le condizioni specificate dal regolamento/contratto di servizio.</p>"
   },
   {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Garanzia KASKO",
-    "question": "Quali dispositivi sono coperti dalla Garanzia KASKO?",
-    "answer": "<p>Sono coperti tutti i dispositivi della gamma videocitofonica BTicino, in tecnologia <strong>2 fili e IP</strong>:</p><ul><li>Posti interni videocitofonici</li><li>Posti esterni videocitofonici</li><li>Dispositivi da guida DIN</li><li>Impianti residenziali e condominiali</li></ul>"
+    "id": "vdf-kasko-003",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Dispositivi coperti",
+    "tags": ["2 fili", "ip", "posti interni", "posti esterni", "din"],
+    "question": "Quali componenti dell’impianto videocitofonico sono coperti da KASKO?",
+    "answer": "<p>La copertura KASKO è valida per <strong>tutti i componenti</strong> dell’impianto videocitofonico BTicino:</p><ul><li><strong>posti interni</strong></li><li><strong>posti esterni</strong></li><li><strong>dispositivi da guida DIN</strong></li></ul><p>Vale sia per impianti in tecnologia <strong>2 fili</strong> sia <strong>IP</strong>.</p>"
   },
   {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Garanzia KASKO",
-    "question": "Cosa pago in caso di intervento con Garanzia KASKO?",
-    "answer": "<ul><li>Riparazioni e sostituzioni coperte</li><li>Si paga solo il diritto fisso di chiamata</li><li>Nessun costo aggiuntivo per i ricambi</li></ul><p><strong>Zero sorprese, costi sotto controllo.</strong></p>"
+    "id": "vdf-kasko-004",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Esclusioni",
+    "tags": ["netatmo", "batteria", "diy", "e-commerce", "gdo"],
+    "question": "Cosa è escluso dalla KASKO BT-KASKO13V?",
+    "answer": "<p>Sono esclusi:</p><ul><li><strong>batterie</strong> e dispositivi Netatmo a batteria o con alimentazione a spina</li><li><strong>tutte le telecamere Netatmo</strong></li><li>dispositivi BTicino acquistati tramite canale <strong>DIY / e-commerce</strong> (GDO, Leroy Merlin, Amazon, ecc.)</li></ul>"
   },
   {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Garanzia KASKO",
-    "question": "Cosa NON è coperto dalla Garanzia KASKO?",
-    "answer": "<ul><li>Batterie</li><li>Dispositivi Netatmo a batteria o con alimentazione a spina</li><li>Tutte le telecamere Netatmo</li><li>Prodotti BTicino acquistati tramite canali DIY ed e-commerce</li></ul>"
-  },
-
-  {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Condominio e casi reali",
-    "question": "Perché la Garanzia KASKO è particolarmente utile in un condominio?",
-    "answer": "<p>In un condominio l’impianto videocitofonico comprende posto esterno, montanti, alimentatori e numerosi posti interni. Un singolo guasto può causare <strong>disservizio per tutti i condomini</strong> e costi elevati.</p>"
+    "id": "vdf-kasko-005",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Costi e vantaggi",
+    "tags": ["costo", "255", "condominio", "riparazione", "sostituzione"],
+    "question": "Perché KASKO è utile anche in un condominio?",
+    "answer": "<p>In un condominio un guasto o un danno al <strong>posto esterno</strong> o alla <strong>montante/parti comuni</strong> può generare:</p><ul><li>costi imprevisti per ricambi e sostituzioni</li><li>interventi tecnici complessi</li><li><strong>disservizio</strong> per tutti i condomini</li></ul><p>Con KASKO (costo indicativo: <strong>255€ / anno</strong>) l’impianto è protetto contro molti eventi accidentali (resta escluso il <strong>diritto fisso di chiamata</strong>).</p><p><strong>Esempio:</strong> se il condominio ha <strong>20 posti interni</strong>, il costo “pro-capite” è circa <strong>12,75€ / anno</strong> per condomino.</p>"
   },
   {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Condominio e casi reali",
-    "question": "Quanto costa proteggere un impianto videocitofonico condominiale?",
-    "answer": "<p>Il costo della Garanzia <strong>KASKO13V è di 255 € all’anno</strong>.</p><p>Esempio condominio con 20 interni:<br><strong>12,75 € all’anno per condomino</strong> per la protezione completa dell’impianto.</p>"
+    "id": "vdf-kasko-006",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Esempi economici",
+    "tags": ["posto esterno", "345000", "vandalismo", "costo"],
+    "question": "Se un vandalo danneggia un posto esterno come BTI-345000, che costo può avere la sostituzione?",
+    "answer": "<p>Il BTI-<strong>345000</strong> (Linea 5000) è un componente di fascia alta: su canali di vendita online specializzati si trovano prezzi nell’ordine di circa <strong>1.170€ – 1.295€ IVA inclusa</strong> (variabili per rivenditore e condizioni commerciali).</p><p>In caso di vandalismo, oltre al componente possono incidere anche <strong>uscita tecnica</strong>, riprogrammazione e tempi di ripristino del servizio condominiale.</p><p><strong>Riferimenti (prezzi indicativi):</strong> BTI-345000 su rivenditori specializzati. :contentReference[oaicite:0]{index=0}</p>"
   },
   {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Condominio e casi reali",
-    "question": "Cosa succede se la pulsantiera esterna viene danneggiata da atti vandalici?",
-    "answer": "<p>La sostituzione di una pulsantiera esterna può comportare costi elevati tra prodotto, manodopera e disservizio. Con la Garanzia KASKO, <strong>riparazione o sostituzione sono coperte</strong>.</p>"
-  },
-  {
-    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
-    "category": "Condominio e casi reali",
-    "question": "E se un posto interno si danneggia per sovratensione o danno accidentale?",
-    "answer": "<p>Sbalzi di tensione o eventi accidentali possono richiedere la sostituzione completa del posto interno. Con KASKO, l’intervento è <strong>gestito e coperto</strong>, senza costi imprevisti.</p>"
-  },
-
-  {
-    "topic": "Entrambi",
-    "category": "Vantaggi",
-    "question": "Quali sono i vantaggi per il cliente finale?",
-    "answer": "<ul><li>Nessun costo imprevisto</li><li>Continuità di servizio</li><li>Impianto sempre efficiente</li><li>Assistenza qualificata BTicino</li></ul>"
-  },
-  {
-    "topic": "Entrambi",
-    "category": "Vantaggi",
-    "question": "Quali sono i vantaggi per l’installatore?",
-    "answer": "<ul><li>Cliente più sereno e soddisfatto</li><li>Meno emergenze e contestazioni</li><li>Assistenza tecnica gestita da BTicino</li><li>Maggiore affidabilità percepita dell’impianto</li></ul>"
+    "id": "vdf-kasko-007",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Esempi economici",
+    "tags": ["posto interno", "344842", "sovratensione", "costo"],
+    "question": "Se un posto interno come BTI-344842 si danneggia per una sovratensione, quanto può costare sostituirlo?",
+    "answer": "<p>Il BTI-<strong>344842</strong> (Classe 300EOS) è un posto interno connesso: sui canali online il prezzo può variare molto, ma spesso è nell’ordine di alcune <strong>centinaia di euro</strong> (es. circa <strong>459€ – 695€ IVA inclusa</strong> a seconda del rivenditore/offerta).</p><p>Oltre al dispositivo, valuta anche eventuali costi di <strong>intervento</strong> e ripristino configurazioni.</p><p><strong>Riferimenti (prezzi indicativi):</strong> BTI-344842 su rivenditori specializzati. :contentReference[oaicite:1]{index=1}</p>"
   },
 
   {
-    "topic": "Entrambi",
-    "category": "Attivazione & prima installazione",
-    "question": "Come faccio ad attivare la garanzia una volta acquistata la cartolina dal Grossista?",
-    "tags": ["attivazione", "contratto", "mybticino"],
-    "answer": "<p>Per attivare l'<strong>estensione di garanzia 4390</strong> oppure la <strong>Kasko13V</strong> dopo l’acquisto della cartolina, segui questi semplici passaggi:</p><h4>1️⃣ Accedi a MyBTicino</h4><p>Vai su <strong>MyBTicino</strong> e seleziona la voce <strong>\"Attiva un contratto\"</strong>.</p><figure><img src=\"images/Attiva_Contratto_MYBtiicno.png\" alt=\"MyBTicino - Attiva un contratto\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\">Accesso all’area MyBTicino e selezione “Attiva un contratto”.</figcaption></figure><h4>2️⃣ Inserisci il codice contratto</h4><p>Inserisci il <strong>codice a 12 cifre</strong> che trovi all’interno della busta e clicca su <strong>\"Verifica codice\"</strong>.</p><figure><img src=\"images/Codice_Contratto_MyBticino.png\" alt=\"Inserimento codice contratto\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\">Inserimento del codice a 12 cifre e verifica.</figcaption></figure><h4>3️⃣ Compila i dati richiesti</h4><p>Inserisci:</p><ul><li>Dati dell’installatore</li><li>Indirizzo dove si trova l'impianto videocitofonico</li><li>Data di acquisto dell’impianto</li></ul><figure><img src=\"images/Inserimento_Dati_MyBticino.png\" alt=\"Compilazione dati impianto\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\"><strong>Attenzione:</strong> indica con precisione l’indirizzo dell’impianto: è lì che verrà eseguito l’eventuale intervento. Le coperture sono valide per interventi presso l’indirizzo registrato in fase di attivazione.</figcaption></figure><h4>4️⃣ Attiva il contratto</h4><p>Clicca su <strong>\"Attiva contratto\"</strong> per completare la procedura.</p><figure><img src=\"images/Operazione_OK_MyBticino.png\" alt=\"Contratto attivato con successo\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\">Conferma di avvenuta attivazione del contratto.</figcaption></figure><p><strong>✔ Esito:</strong></p><ul><li>Il contratto viene generato automaticamente in PDF</li></ul>"
+    "id": "vdf-mix-001",
+    "topic": "Estensione di Garanzia (art. BT-4390)",
+    "category": "Confronto",
+    "tags": ["differenze", "kasko", "estensione", "cosa cambia"],
+    "question": "Qual è la differenza tra Estensione di Garanzia (BT-4390) e KASKO (BT-KASKO13V)?",
+    "answer": "<p><strong>Estensione di Garanzia (BT-4390):</strong> estende nel tempo la copertura sui prodotti videocitofonici secondo le regole del servizio (durata 5 anni, attivazione entro 12 mesi dalla data di installazione).</p><p><strong>KASKO (BT-KASKO13V):</strong> aggiunge una protezione specifica contro <strong>danni accidentali / eventi esterni</strong> (vandalismo, sovratensioni, eventi atmosferici, fulmini), che possono non rientrare nella garanzia “standard”.</p><p>In pratica: <strong>BT-4390 = estensione nel tempo</strong>; <strong>KASKO = protezione totale contro eventi accidentali</strong>.</p>"
+  },
+  {
+    "id": "vdf-mix-002",
+    "topic": "KASKO Videocitofonia (art. BT-KASKO13V)",
+    "category": "Assistenza",
+    "tags": ["assistenza", "intervento", "diritto di chiamata"],
+    "question": "Con KASKO devo pagare qualcosa quando interviene il tecnico?",
+    "answer": "<p>Con KASKO, riparazioni o sostituzioni (nei casi coperti) sono gestite senza spese per i materiali, <strong>escluso il diritto fisso di chiamata</strong>.</p><p>In questo modo il cliente evita costi imprevisti importanti, soprattutto su componenti condominiali o di fascia alta.</p>"
   }
 ]
