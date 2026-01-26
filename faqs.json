@@ -1,101 +1,122 @@
 [
   {
+    "topic": "Entrambi",
     "category": "Panoramica coperture",
     "question": "Quali coperture post-vendita propone BTicino per gli impianti videocitofonici?",
     "answer": "<p>BTicino propone <strong>due livelli di copertura post-vendita</strong>, pensati per garantire continuità di servizio e serenità nel tempo:</p><ul><li><strong>Estensione Garanzia Prodotto</strong>: prolunga la garanzia legale contro difetti di fabbricazione.</li><li><strong>Garanzia KASKO 1 anno</strong>: protegge l’impianto da danni accidentali ed eventi imprevisti non coperti dalla garanzia legale.</li></ul><p>I due servizi sono <strong>complementari</strong> e rispondono a esigenze diverse.</p>"
   },
   {
+    "topic": "Entrambi",
     "category": "Panoramica coperture",
     "question": "Qual è la differenza tra Estensione Garanzia e Garanzia KASKO?",
     "answer": "<p>La differenza principale riguarda <strong>il tipo di evento coperto</strong>:</p><ul><li><strong>Estensione Garanzia</strong> → copre difetti di fabbricazione e problemi riconducibili al prodotto.</li><li><strong>Garanzia KASKO</strong> → copre atti vandalici, sovratensioni, eventi atmosferici, fulmini e danni accidentali.</li></ul><p><strong>In sintesi:</strong><br>👉 l’Estensione tutela il prodotto<br>👉 la KASKO tutela l’impianto nella vita reale</p>"
   },
   {
+    "topic": "Entrambi",
     "category": "Panoramica coperture",
     "question": "Posso attivare sia Estensione Garanzia che KASKO sullo stesso impianto?",
     "answer": "<p>Sì. I due servizi possono essere <strong>attivati insieme</strong> perché coprono ambiti diversi e aumentano il livello di protezione complessiva dell’impianto.</p>"
   },
+
   {
+    "topic": "Estensione Garanzia (BT-4390)",
     "category": "Estensione Garanzia",
     "question": "Che cos’è l’Estensione Garanzia Videocitofonia BT-4390?",
     "answer": "<p>È un servizio che <strong>estende la durata della garanzia legale fino a 5 anni</strong> dalla data di installazione dell’impianto, mantenendo gli stessi criteri e modalità operative della garanzia standard.</p>"
   },
   {
+    "topic": "Estensione Garanzia (BT-4390)",
     "category": "Estensione Garanzia",
     "question": "Entro quando deve essere attivata l’estensione di garanzia?",
     "answer": "<p>L’estensione deve essere <strong>attivata entro 12 mesi</strong> dalla data di installazione dell’impianto.</p>"
   },
   {
+    "topic": "Estensione Garanzia (BT-4390)",
     "category": "Estensione Garanzia",
     "question": "Quali prodotti sono coperti dall’estensione di garanzia?",
     "answer": "<p>Sono coperti tutti i prodotti BTicino relativi ai sistemi citofonici e videocitofonici, indipendentemente dalla tecnologia (2 fili o IP):</p><ul><li>Pulsantiere esterne</li><li>Posti interni</li><li>Accessori correlati (inclusi alimentatori)</li><li>Telecamere del catalogo BTicino</li><li>Telecamere da esterno del catalogo Netatmo</li></ul>"
   },
   {
+    "topic": "Estensione Garanzia (BT-4390)",
     "category": "Estensione Garanzia",
     "question": "Cosa è escluso dall’estensione di garanzia?",
     "answer": "<ul><li>Batterie degli articoli BTicino (copertura 1 anno)</li><li>Prodotti installati fuori dal territorio italiano</li></ul><p><em>Italia, Repubblica di San Marino e Città del Vaticano sono inclusi.</em></p>"
   },
+
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Garanzia KASKO",
     "question": "Che cos’è la Garanzia KASKO impianto videocitofonico?",
     "answer": "<p>La Garanzia KASKO BTicino è un servizio di <strong>protezione estesa annuale</strong> pensato per chi desidera vivere l’impianto videocitofonico senza preoccupazioni, coprendo i danni non prevedibili che possono verificarsi durante l’utilizzo quotidiano.</p>"
   },
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Garanzia KASKO",
     "question": "Quali eventi copre la Garanzia KASKO?",
     "answer": "<ul><li>Atti vandalici</li><li>Danni accidentali</li><li>Sbalzi di tensione e sovratensioni</li><li>Eventi atmosferici e fulmini</li></ul><p>Eventi non coperti dalla garanzia legale ma molto frequenti nella realtà.</p>"
   },
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Garanzia KASKO",
     "question": "Quali dispositivi sono coperti dalla Garanzia KASKO?",
     "answer": "<p>Sono coperti tutti i dispositivi della gamma videocitofonica BTicino, in tecnologia <strong>2 fili e IP</strong>:</p><ul><li>Posti interni videocitofonici</li><li>Posti esterni videocitofonici</li><li>Dispositivi da guida DIN</li><li>Impianti residenziali e condominiali</li></ul>"
   },
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Garanzia KASKO",
     "question": "Cosa pago in caso di intervento con Garanzia KASKO?",
     "answer": "<ul><li>Riparazioni e sostituzioni coperte</li><li>Si paga solo il diritto fisso di chiamata</li><li>Nessun costo aggiuntivo per i ricambi</li></ul><p><strong>Zero sorprese, costi sotto controllo.</strong></p>"
   },
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Garanzia KASKO",
     "question": "Cosa NON è coperto dalla Garanzia KASKO?",
     "answer": "<ul><li>Batterie</li><li>Dispositivi Netatmo a batteria o con alimentazione a spina</li><li>Tutte le telecamere Netatmo</li><li>Prodotti BTicino acquistati tramite canali DIY ed e-commerce</li></ul>"
   },
+
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Condominio e casi reali",
     "question": "Perché la Garanzia KASKO è particolarmente utile in un condominio?",
     "answer": "<p>In un condominio l’impianto videocitofonico comprende posto esterno, montanti, alimentatori e numerosi posti interni. Un singolo guasto può causare <strong>disservizio per tutti i condomini</strong> e costi elevati.</p>"
   },
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Condominio e casi reali",
     "question": "Quanto costa proteggere un impianto videocitofonico condominiale?",
     "answer": "<p>Il costo della Garanzia <strong>KASKO13V è di 255 € all’anno</strong>.</p><p>Esempio condominio con 20 interni:<br><strong>12,75 € all’anno per condomino</strong> per la protezione completa dell’impianto.</p>"
   },
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Condominio e casi reali",
     "question": "Cosa succede se la pulsantiera esterna viene danneggiata da atti vandalici?",
     "answer": "<p>La sostituzione di una pulsantiera esterna può comportare costi elevati tra prodotto, manodopera e disservizio. Con la Garanzia KASKO, <strong>riparazione o sostituzione sono coperte</strong>.</p>"
   },
   {
+    "topic": "KASKO Videocitofonia (BT-KASKO13V)",
     "category": "Condominio e casi reali",
     "question": "E se un posto interno si danneggia per sovratensione o danno accidentale?",
     "answer": "<p>Sbalzi di tensione o eventi accidentali possono richiedere la sostituzione completa del posto interno. Con KASKO, l’intervento è <strong>gestito e coperto</strong>, senza costi imprevisti.</p>"
   },
+
   {
+    "topic": "Entrambi",
     "category": "Vantaggi",
     "question": "Quali sono i vantaggi per il cliente finale?",
     "answer": "<ul><li>Nessun costo imprevisto</li><li>Continuità di servizio</li><li>Impianto sempre efficiente</li><li>Assistenza qualificata BTicino</li></ul>"
   },
   {
+    "topic": "Entrambi",
     "category": "Vantaggi",
     "question": "Quali sono i vantaggi per l’installatore?",
     "answer": "<ul><li>Cliente più sereno e soddisfatto</li><li>Meno emergenze e contestazioni</li><li>Assistenza tecnica gestita da BTicino</li><li>Maggiore affidabilità percepita dell’impianto</li></ul>"
   },
-{
-    "question": "Come faccio ad attivare la garanzia una volta acquistata la cartolina dal Grossista?",
+
+  {
+    "topic": "Entrambi",
     "category": "Attivazione & prima installazione",
+    "question": "Come faccio ad attivare la garanzia una volta acquistata la cartolina dal Grossista?",
     "tags": ["attivazione", "contratto", "mybticino"],
-    "answer": "<p>Per attivare l'<strong>estensione di garanzia 4390</strong> oppure la <strong>Kasko13V</strong> dopo l’acquisto della cartolina, segui questi semplici passaggi:</p>\n\n<h4>1️⃣ Accedi a MyBTicino</h4>\n<p>Vai su <strong>MyBTicino</strong> e seleziona la voce <strong>\"Attiva un contratto\"</strong>.</p>\n<figure>\n  <img src=\"images/Attiva_Contratto_MYBtiicno.png\" alt=\"MyBTicino - Attiva un contratto\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\">.</figcaption>\n</figure>\n\n<h4>2️⃣ Inserisci il codice contratto</h4>\n<p>Inserisci il <strong>codice a 12 cifre</strong> che trovi all’interno della busta e clicca su </strong>\"Verifica codice\"</strong>.</p>\n<figure>\n  <img src=\"images/Codice_Contratto_MyBticino.png\" alt=\"Inserimento codice contratto\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\">.</figcaption>\n</figure>\n\n<h4>3️⃣ Compila i dati richiesti</h4>\n<p>Inserisci:</p>\n<ul>\n  <li>Dati dell’installatore</li>\n  <li>Indirizzo dove si trova l'impianto videocitofonico</li>\n  <li>Data di acquisto dell’impianto</li>\n</ul>\n<figure>\n  <img src=\"images/Inserimento_Dati_MyBticino.png\" alt=\"Compilazione dati impianto\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\"><strong>ATTENZIONE:</strong> è necessario indicare esattamente dove si trova l'impianto, perchè è presso questo indirizzo che il nostro centro assistenza effettuerà l'intervento. La Kasko e/o l'estensione di garanzia <strong>sono valide solo per interventi presso l'indirizzo riportato qui all'atto della registrazione</strong>.</figcaption>\n</figure>\n\n<h4>4️⃣ Attiva il contratto</h4>\n<p>Clicca su <strong>\"Attiva contratto\"</strong> per completare la procedura.</p>\n<figure>\n  <img src=\"images/Operazione_OK_MyBticino.png\" alt=\"Contratto attivato con successo\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\">Conferma di avvenuta attivazione del contratto.</figcaption>\n</figure>\n\n<p><strong>✔ Esito:</strong></p>\n<ul>\n  <li>Il contratto viene generato automaticamente in PDF</li>\n"
+    "answer": "<p>Per attivare l'<strong>estensione di garanzia 4390</strong> oppure la <strong>Kasko13V</strong> dopo l’acquisto della cartolina, segui questi semplici passaggi:</p><h4>1️⃣ Accedi a MyBTicino</h4><p>Vai su <strong>MyBTicino</strong> e seleziona la voce <strong>\"Attiva un contratto\"</strong>.</p><figure><img src=\"images/Attiva_Contratto_MYBtiicno.png\" alt=\"MyBTicino - Attiva un contratto\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\">Accesso all’area MyBTicino e selezione “Attiva un contratto”.</figcaption></figure><h4>2️⃣ Inserisci il codice contratto</h4><p>Inserisci il <strong>codice a 12 cifre</strong> che trovi all’interno della busta e clicca su <strong>\"Verifica codice\"</strong>.</p><figure><img src=\"images/Codice_Contratto_MyBticino.png\" alt=\"Inserimento codice contratto\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\">Inserimento del codice a 12 cifre e verifica.</figcaption></figure><h4>3️⃣ Compila i dati richiesti</h4><p>Inserisci:</p><ul><li>Dati dell’installatore</li><li>Indirizzo dove si trova l'impianto videocitofonico</li><li>Data di acquisto dell’impianto</li></ul><figure><img src=\"images/Inserimento_Dati_MyBticino.png\" alt=\"Compilazione dati impianto\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\"><strong>Attenzione:</strong> indica con precisione l’indirizzo dell’impianto: è lì che verrà eseguito l’eventuale intervento. Le coperture sono valide per interventi presso l’indirizzo registrato in fase di attivazione.</figcaption></figure><h4>4️⃣ Attiva il contratto</h4><p>Clicca su <strong>\"Attiva contratto\"</strong> per completare la procedura.</p><figure><img src=\"images/Operazione_OK_MyBticino.png\" alt=\"Contratto attivato con successo\" style=\"max-width:100%;border-radius:8px;\"><figcaption class=\"meta\">Conferma di avvenuta attivazione del contratto.</figcaption></figure><p><strong>✔ Esito:</strong></p><ul><li>Il contratto viene generato automaticamente in PDF</li></ul>"
   }
 ]
-
-
-
