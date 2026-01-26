@@ -1003,13 +1003,13 @@
       }
 
       // prepare payload
-     const payload = {
-  to_email: ADMIN_TO_EMAIL, // <-- la tua mail fissa
-  from_name: document.getElementById("name").value.trim(),
-  from_email: email,
-  role: document.getElementById("role").value,
-  category: document.getElementById("category").value,
-  message: document.getElementById("message").value.trim(),
+    const payload = {
+  to_email: ADMIN_TO_EMAIL, // la tua mail fissa (destinatario)
+  from_name: name,          // valore già letto sopra
+  from_email: email,        // valore già letto sopra (normalizzato)
+  role: role,
+  category: category,
+  message: question,        // <-- qui prende il testo dal textarea id="question"
   time: new Date().toLocaleString("it-IT")
 };
 
