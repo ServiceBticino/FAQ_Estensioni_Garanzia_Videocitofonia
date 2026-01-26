@@ -1,162 +1,180 @@
 [
   {
-    "question": "Come faccio a ricevere il dispositivo una volta acquistata la cartolina dal Grossista?",
-    "category": "Attivazione & prima installazione",
+    "id": "vc-4390-001",
+    "topic": "Estensione di Garanzia",
+    "topic_code": "BT-4390",
+    "category": "Panoramica",
     "tags": [
+      "videocitofonia",
+      "estensione garanzia",
+      "bt-4390"
+    ],
+    "question": "Che cos’è l’Estensione di Garanzia Videocitofonia (art. BT-4390)?",
+    "answer": "<p>L’<strong>Estensione di Garanzia Videocitofonia</strong> (art. <strong>BT-4390</strong>) prolunga la copertura dei prodotti <strong>citofonici e videocitofonici BTicino</strong> fino a <strong>5 anni</strong> dalla data di installazione, secondo le condizioni del servizio.</p><p>È pensata per chi vuole ridurre i rischi di spese impreviste legate a guasti e avere un riferimento chiaro per la gestione della garanzia.</p>"
+  },
+  {
+    "id": "vc-4390-002",
+    "topic": "Estensione di Garanzia",
+    "topic_code": "BT-4390",
+    "category": "Copertura",
+    "tags": [
+      "copertura",
+      "2 fili",
+      "ip",
+      "netatmo"
+    ],
+    "question": "Quali prodotti sono coperti dall’Estensione di Garanzia BT-4390?",
+    "answer": "<p>Sono coperti i prodotti di catalogo BTicino relativi a <strong>sistemi Citofonici e Videocitofonici</strong>, indipendentemente dalla tecnologia (<strong>2 Fili</strong> o <strong>IP</strong>), inclusi:</p><ul><li>pulsantiere / posti esterni</li><li>posti interni</li><li>accessori correlati (inclusi <strong>alimentatori</strong> e <strong>telecamere</strong>)</li><li>telecamere da esterno del catalogo <strong>Netatmo</strong></li></ul>"
+  },
+  {
+    "id": "vc-4390-003",
+    "topic": "Estensione di Garanzia",
+    "topic_code": "BT-4390",
+    "category": "Esclusioni",
+    "tags": [
+      "esclusioni",
+      "batterie"
+    ],
+    "question": "Cosa è escluso dall’Estensione di Garanzia BT-4390?",
+    "answer": "<p>Le <strong>batterie</strong> degli articoli BTicino sono escluse dalla copertura quinquennale: per le batterie è riconosciuta una copertura di <strong>1 anno</strong>.</p>"
+  },
+  {
+    "id": "vc-4390-004",
+    "topic": "Estensione di Garanzia",
+    "topic_code": "BT-4390",
+    "category": "Durata e attivazione",
+    "tags": [
+      "durata",
       "attivazione",
-      "contratto",
-      "mybticino"
+      "5 anni"
     ],
-    "answer": "<p>Per ricevere il dispositivo <strong>Sicuri e Connessi</strong> dopo l’acquisto della cartolina, segui questi semplici passaggi:</p>\n\n<h4>1️⃣ Accedi a MyBTicino</h4>\n<p>Vai su <strong>MyBTicino</strong> e seleziona la voce <strong>\"Attiva un contratto\"</strong>.</p>\n<figure>\n  <img src=\"images/Attiva_Contratto_MYBtiicno.png\" alt=\"MyBTicino - Attiva un contratto\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\">Accesso all’area MyBTicino e selezione \"Attiva un contratto\".</figcaption>\n</figure>\n\n<h4>2️⃣ Inserisci il codice contratto</h4>\n<p>Inserisci il <strong>codice a 12 cifre</strong> che trovi all’interno della busta e clicca su <strong>\"Verifica codice\"</strong>.</p>\n<figure>\n  <img src=\"images/Codice_Contratto_MyBticino.png\" alt=\"Inserimento codice contratto\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\">Inserimento del codice contratto ricevuto con la cartolina.</figcaption>\n</figure>\n\n<h4>3️⃣ Compila i dati richiesti</h4>\n<p>Inserisci:</p>\n<ul>\n  <li>Dati dell’installatore</li>\n  <li>Indirizzo di consegna del dispositivo</li>\n  <li>Data di acquisto dell’impianto</li>\n</ul>\n<figure>\n  <img src=\"images/Inserimento_Dati_MyBticino.png\" alt=\"Compilazione dati impianto\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\">Compilazione dei dati di installazione e consegna.</figcaption>\n</figure>\n\n<h4>4️⃣ Attiva il contratto</h4>\n<p>Clicca su <strong>\"Attiva contratto\"</strong> per completare la procedura.</p>\n<figure>\n  <img src=\"images/Operazione_OK_MyBticino.png\" alt=\"Contratto attivato con successo\" style=\"max-width:100%;border-radius:8px;\">\n  <figcaption class=\"meta\">Conferma di avvenuta attivazione del contratto.</figcaption>\n</figure>\n\n<p><strong>✔ Esito:</strong></p>\n<ul>\n  <li>Il contratto viene generato automaticamente in PDF</li>\n  <li>Entro <strong>48 ore</strong> il dispositivo viene spedito all’indirizzo indicato</li>\n</ul>",
-    "id": "vfa-001",
-    "topic": "KASKO Videocitofonia"
+    "question": "Quanto dura la BT-4390 e quando va attivata?",
+    "answer": "<p>La garanzia ha durata di <strong>5 anni</strong> a partire dalla <strong>data di installazione dell’impianto</strong> e deve essere <strong>attivata entro 12 mesi</strong> dalla stessa.</p>"
   },
   {
-    "question": "Perché dovrei pagare un canone se ho già la fibra di casa?",
-    "category": "Connettività & rete dedicata",
+    "id": "vc-4390-005",
+    "topic": "Estensione di Garanzia",
+    "topic_code": "BT-4390",
+    "category": "Validità territoriale",
     "tags": [
-      "canone",
-      "fibra",
-      "rete dedicata"
+      "territorio",
+      "italia",
+      "san marino",
+      "vaticano"
     ],
-    "answer": "<p><strong>Sicuri e Connessi</strong> non sostituisce la fibra, ma la affianca con una rete dedicata esclusivamente ai dispositivi smart della casa.</p>\n<p>La rete internet di casa è pensata per navigazione e intrattenimento (TV, streaming, smartphone, PC) e non è progettata per proteggere sistemi IoT critici.</p>\n<p>Con Sicuri e Connessi:</p>\n<ul>\n  <li>i dispositivi IoT sono isolati su una rete separata e protetta;</li>\n  <li>la connessione continua a funzionare anche se la fibra non va;</li>\n  <li>il cliente può cambiare operatore fibra quando vuole, senza riconfigurare nulla.</li>\n</ul>\n<p><strong>👉 Il canone non paga “internet”, ma la sicurezza e la certezza della continuità di servizio.</strong></p>",
-    "id": "vfa-002",
-    "topic": "KASKO Videocitofonia"
+    "question": "Dove è valida l’Estensione di Garanzia BT-4390?",
+    "answer": "<p>È valida per i sistemi installati sul territorio <strong>italiano</strong>, inclusa la <strong>Repubblica di San Marino</strong> e la <strong>Città del Vaticano</strong>. Non si applica alle apparecchiature vendute o utilizzate al di fuori di questi territori.</p>"
   },
   {
-    "question": "Perché è importante proteggere la connettività di una casa SMART?",
-    "category": "Sicurezza",
+    "id": "vc-kasko-001",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Panoramica",
     "tags": [
-      "smart home",
-      "sicurezza",
-      "rete",
-      "iot"
+      "kasko",
+      "videocitofonia",
+      "bt-kasko13v"
     ],
-    "answer": "<p>Proteggere la connettività di una casa smart è fondamentale perché il vero punto critico <strong>non è la smart home in sé</strong>, ma <strong>la rete a cui è collegata</strong>.</p><p>Una casa smart connessa a una rete non adeguatamente protetta può diventare vulnerabile, soprattutto quando gestisce dispositivi sensibili come:</p><ul><li>sistemi di allarme</li><li>videocamere</li><li>controllo accessi</li><li>automazioni critiche</li></ul><p>Il servizio <strong>Sicuri e Connessi</strong> nasce proprio per affrontare questo aspetto, permettendo di:</p><ul><li>separare la rete IoT dalla rete domestica</li><li>proteggere i dati e le comunicazioni</li><li>prevenire accessi non autorizzati dall’esterno</li></ul><p><strong>👉 Una casa smart è davvero sicura solo quando la sua connettività è progettata e protetta correttamente.</strong></p>",
-    "id": "vfa-003",
-    "topic": "KASKO Videocitofonia"
+    "question": "Che cos’è la Garanzia KASKO Videocitofonia (art. BT-KASKO13V)?",
+    "answer": "<p>La <strong>Garanzia KASKO BTicino</strong> (art. <strong>BT-KASKO13V</strong>) è il servizio di protezione estesa pensato per chi desidera vivere con tranquillità l’utilizzo quotidiano del proprio impianto videocitofonico.</p><p>Atti vandalici, sbalzi di tensione, eventi atmosferici o fulmini possono danneggiare l’impianto, comportando spese impreviste e interventi complessi. Con KASKO, BTicino offre una copertura annuale completa contro i <strong>danni accidentali</strong>, valida per posti interni, posti esterni e dispositivi da guida DIN (sia in tecnologia <strong>2 Fili</strong> che <strong>IP</strong>).</p><p>Il cliente può contare su un supporto rapido e qualificato, senza spese per riparazioni o sostituzioni (<strong>escluso il diritto fisso di chiamata</strong>), per un impianto sempre efficiente e protetto.</p>"
   },
   {
-    "question": "Non basta il Wi-Fi del router dell’operatore?",
-    "category": "Connettività & rete dedicata",
+    "id": "vc-kasko-002",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Copertura",
     "tags": [
-      "wifi",
-      "router operatore",
-      "configurazione"
+      "copertura",
+      "2 fili",
+      "ip",
+      "posti interni",
+      "posti esterni",
+      "din"
     ],
-    "answer": "<p>I router degli operatori non sono progettati per gestire impianti IoT critici.</p>\n<p>Senza Sicuri e Connessi, cliente o installatore devono:</p>\n<ul>\n  <li>scegliere tra Wi-Fi 5/6/7 in base ai dispositivi e al router dell’operatore;</li>\n  <li>decidere se usare 2,4 o 5 GHz;</li>\n  <li>creare una rete separata per l’IoT per evitare congestioni con lo streaming;</li>\n  <li>aprire manualmente le porte sul router.</li>\n</ul>\n<p><strong>Con Sicuri e Connessi</strong> tutto è già configurato e ottimizzato per i dispositivi IoT BTicino.</p>",
-    "id": "vfa-004",
-    "topic": "KASKO Videocitofonia"
+    "question": "Cosa protegge la KASKO su un impianto videocitofonico?",
+    "answer": "<p>La KASKO offre una copertura annuale completa contro i <strong>danni accidentali</strong> ed è valida per <strong>tutti i componenti dell’impianto</strong>:</p><ul><li>posti interni (videocitofoni/citofoni)</li><li>posti esterni (pulsantiere/moduli audio-video)</li><li>dispositivi da <strong>guida DIN</strong> e componenti di impianto</li></ul><p>È valida sia in tecnologia <strong>2 Fili</strong> sia <strong>IP</strong>.</p>"
   },
   {
-    "question": "Chi gestisce SIM, router e sicurezza?",
-    "category": "Gestione del servizio",
+    "id": "vc-kasko-003",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Esclusioni",
     "tags": [
-      "sim",
-      "router",
-      "bticino",
-      "assistenza"
+      "esclusioni",
+      "netatmo",
+      "diy",
+      "e-commerce",
+      "batterie"
     ],
-    "answer": "<p><strong>Un unico interlocutore tecnico: BTicino.</strong></p>\n<p>Il cliente non deve chiamare l’operatore telefonico, non deve parlare con più call center e non deve capire chi è responsabile di cosa.</p>\n<p><strong>👉 BTicino gestisce tutto:</strong> connettività, sicurezza, aggiornamenti e compatibilità.</p>",
-    "id": "vfa-005",
-    "topic": "KASKO Videocitofonia"
+    "question": "Cosa è escluso dalla KASKO Videocitofonia?",
+    "answer": "<p>Sono esclusi:</p><ul><li><strong>batterie</strong> e dispositivi Netatmo a batteria o con alimentazione a spina</li><li>tutte le <strong>telecamere Netatmo</strong></li><li>dispositivi BTicino acquistati tramite canali <strong>DIY</strong> ed <strong>e-commerce</strong> (GDO, Leroy Merlin, Amazon, ecc.)</li></ul>"
   },
   {
-    "question": "Come posso verificare se nella mia zona è disponibile la copertura necessaria per il servizio Sicuri e Connessi?",
-    "category": "Gestione del servizio",
+    "id": "vc-kasko-004",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Durata e rinnovo",
     "tags": [
-      "sim",
-      "router",
-      "rete",
-      "segnale"
-    ],
-    "answer": "<p>La tecnologia impiegata ottimizza automaticamente il segnale, garantendo continuità di servizio.</p><p>L’utente non deve preoccuparsi di nulla: il sistema riesce in automatico a sfruttare il miglior segnale che le infrastrutture di rete offrono nella zona di installazione, rendendo la connettività più stabile e performante e assicurando un funzionamento costante.</p><p><strong>👉 In questo modo il servizio resta affidabile anche in presenza di variazioni di copertura, senza interventi manuali o configurazioni da parte dell’utente.</strong></p>",
-    "id": "vfa-006",
-    "topic": "KASKO Videocitofonia"
-  },
-  {
-    "question": "E se qualcosa non funziona, chi interviene?",
-    "category": "Assistenza",
-    "tags": [
-      "assistenza",
-      "diagnostica",
-      "monitoraggio"
-    ],
-    "answer": "<p><strong>Interviene direttamente BTicino.</strong></p>\n<p>BTicino monitora il sistema da remoto, fa diagnostica, aggiorna router e configurazioni e fornisce assistenza dedicata.</p>\n<p><strong>👉 L’installatore consegna un impianto affidabile, stabile e non si preoccupa dell'assistenza</strong>, per quella ci pensa il numero verde Bticino.</p>",
-    "id": "vfa-007",
-    "topic": "KASKO Videocitofonia"
-  },
-  {
-    "question": "Posso usare questa rete anche per navigare o fare streaming?",
-    "category": "Uso della rete",
-    "tags": [
-      "streaming",
-      "navigazione",
-      "rete dedicata"
-    ],
-    "answer": "<p>No, ed è un vantaggio.</p>\n<p>La rete Sicuri e Connessi è dedicata esclusivamente ai dispositivi IoT BTicino: meno traffico inutile = più affidabilità.</p>",
-    "id": "vfa-008",
-    "topic": "KASKO Videocitofonia"
-  },
-  {
-    "question": "Quali dispositivi sono coperti dall’estensione di garanzia?",
-    "category": "Garanzia & dispositivi coperti",
-    "tags": [
-      "garanzia",
-      "lan",
-      "wifi",
-      "teltonika"
-    ],
-    "answer": "<p>Tutti i dispositivi <strong>BTicino</strong> connessi via <strong>LAN o Wi-Fi</strong> al router <strong>Teltonika</strong> godono dell’estensione di garanzia per tutta la durata del contratto (1 anno, rinnovabile).</p><p>A solo titolo di esempio, ma non esaustivo, sono coperti:</p><ul><li><strong>F460 / F461</strong> – Gateway SCS</li><li><strong>JC / JW / N / L / NT / AM / K4510C</strong> – Gateway incasso Smart</li><li><strong>FC80GT</strong> – Gateway guida DIN Smart</li><li><strong>344842 / 344884 / 344682</strong> – Videocitofoni connessi</li><li><strong>XW / XG / XM8002</strong> – Cronotermostati connessi</li><li><strong>375001</strong> – Server Videocitofonia IP</li></ul>",
-    "id": "vfa-009",
-    "topic": "Estensione di Garanzia"
-  },
-  {
-    "question": "Cosa succede se non rinnovo il servizio dopo il primo anno?",
-    "category": "Garanzia & rinnovo",
-    "tags": [
+      "durata",
       "rinnovo",
-      "sim",
-      "router"
+      "1 anno"
     ],
-    "answer": "<p>Il router resta al cliente. La SIM IoT non è più attiva e decadono assistenza ed estensione di garanzia.</p>\n<p>Se il cliente collega la fibra di casa al router Teltonika, la SIM viene disabilitata automaticamente e la fibra diventa la connessione primaria.</p>\n<p><strong>👉 Nessun vincolo, nessuno spreco.</strong></p>",
-    "id": "vfa-010",
-    "topic": "KASKO Videocitofonia"
+    "question": "Quanto dura la KASKO e si può rinnovare?",
+    "answer": "<p>La KASKO ha durata di <strong>1 anno</strong>. È pensata come copertura annuale e può essere rinnovata secondo le modalità previste dall’offerta commerciale.</p>"
   },
   {
-    "question": "Quanto costa il rinnovo annuale del servizio ?",
-    "category": "Costi & valore",
+    "id": "vc-kasko-007",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Condominio",
     "tags": [
-      "Rinnovo",
-      "costo",
-      "valore"
+      "condominio",
+      "ripartizione costi",
+      "parti comuni"
     ],
-    "answer": "<p>4 € al mese includono connettività IoT dedicata, sicurezza della rete, monitoraggio continuo, assistenza BTicino, aggiornamenti automatici ed estensione della garanzia.</p>\n<p><strong>👉 Costano meno di una singola uscita tecnica, proteggendo un impianto che vale molto di più.</strong></p>",
-    "id": "vfa-011",
-    "topic": "KASKO Videocitofonia"
+    "question": "Perché la KASKO è particolarmente utile in condominio?",
+    "answer": "<p>In condominio un danno a <strong>parti comuni</strong> (montanti, alimentatori, componenti di impianto) o al <strong>posto esterno</strong> può generare:</p><ul><li>costi di ripristino significativi</li><li>disservizio per tutti i residenti</li><li>tempi di intervento e gestione più complessi</li></ul><p>Con una copertura annuale come la KASKO si protegge l’impianto nel suo insieme, riducendo l’impatto economico e operativo in caso di evento accidentale.</p>"
   },
   {
-    "question": "Perché per un installatore è utile proporre Sicuri e Connessi ai propri clienti?",
-    "category": "Installatore",
+    "id": "vc-kasko-008",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Condominio",
     "tags": [
-      "installatore",
-      "valore",
-      "post-vendita"
+      "prezzo",
+      "255",
+      "ripartizione",
+      "20 interni"
     ],
-    "answer": "<p>Proporre <strong>Sicuri e Connessi</strong> consente all’installatore di offrire un servizio aggiuntivo che <strong>tutela il cliente finale</strong> e allo stesso tempo <strong>protegge il lavoro svolto nel tempo</strong>.</p><p>Il cliente beneficia di una connettività dedicata, sicura e monitorata, fondamentale per il corretto funzionamento di impianti smart, sistemi di sicurezza e dispositivi connessi.</p><p>L’installatore, dal canto suo, propone una soluzione professionale e affidabile <strong>senza doversi fare carico dell’assistenza continuativa</strong>, che è gestita direttamente da <strong>BTicino</strong> tramite i propri canali di supporto.</p><ul><li>Il cliente ha la garanzia di un servizio stabile e supportato da un brand strutturato</li><li>L’installatore riduce le chiamate post-vendita non legate all’impianto</li><li>Il rapporto cliente–installatore resta positivo e duraturo</li></ul><p><strong>👉 Un servizio che aumenta la soddisfazione del cliente e semplifica il lavoro dell’installatore, senza stress operativo.</strong></p>",
-    "id": "vfa-012",
-    "topic": "KASKO Videocitofonia"
+    "question": "Esempio di ripartizione: quanto costa la KASKO per singolo condomino?",
+    "answer": "<p>Se la KASKO costa <strong>255 € / anno</strong> e il condominio ha <strong>20 posti interni</strong>, il costo medio per condomino è:</p><p><strong>255 € ÷ 20 = 12,75 € / anno</strong></p><p>Una cifra molto contenuta rispetto al costo potenziale di un singolo evento (vandalismo, fulmine, sovratensione) e al disservizio generato.</p>"
   },
   {
-    "question": "Posso collegare altri dispositivi IoT al servizio Sicuri e Connessi oltre a quelli BTicino?",
-    "category": "Dispositivi compatibili",
+    "id": "vc-common-001",
+    "topic": "Estensione di Garanzia",
+    "topic_code": "BT-4390",
+    "category": "Confronto",
     "tags": [
-      "iot",
-      "terze parti",
-      "compatibilità"
+      "confronto",
+      "differenze",
+      "bt-4390",
+      "bt-kasko13v"
     ],
-    "answer": "<p>Sì: a livello tecnico puoi collegare anche dispositivi IoT di terze parti (es. elettrodomestici connessi, Bimby, telecamere di terze parti, ecc.).</p>\n<p>È importante però chiarire che BTicino garantisce, testa e supporta ufficialmente Sicuri e Connessi per la connettività cloud dei dispositivi IoT BTicino.</p>\n<p>Inoltre la connettività del servizio è dedicata ai dispositivi BTicino (non nasce come “internet di casa” generico).</p>",
-    "id": "vfa-013",
-    "topic": "KASKO Videocitofonia"
+    "question": "Qual è la differenza tra Estensione di Garanzia (BT-4390) e KASKO (BT-KASKO13V)?",
+    "answer": "<p><strong>BT-4390 (Estensione di Garanzia)</strong>: estende la durata della garanzia fino a <strong>5 anni</strong> per i prodotti citofonici/videocitofonici, seguendo le condizioni del servizio.</p><p><strong>BT-KASKO13V (KASKO)</strong>: copre per <strong>1 anno</strong> anche i <strong>danni accidentali</strong> (vandalismo, sovratensioni, eventi atmosferici/fulmini), riducendo il rischio di spese impreviste. Restano esclusi i costi di diritto fisso di chiamata.</p>"
+  },
+  {
+    "id": "vc-common-002",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Confronto",
+    "tags": [
+      "confronto",
+      "differenze",
+      "bt-4390",
+      "bt-kasko13v"
+    ],
+    "question": "Qual è la differenza tra Estensione di Garanzia (BT-4390) e KASKO (BT-KASKO13V)?",
+    "answer": "<p><strong>BT-4390 (Estensione di Garanzia)</strong>: estende la durata della garanzia fino a <strong>5 anni</strong> per i prodotti citofonici/videocitofonici, seguendo le condizioni del servizio.</p><p><strong>BT-KASKO13V (KASKO)</strong>: copre per <strong>1 anno</strong> anche i <strong>danni accidentali</strong> (vandalismo, sovratensioni, eventi atmosferici/fulmini), riducendo il rischio di spese impreviste. Restano esclusi i costi di diritto fisso di chiamata.</p>"
   }
 ]
