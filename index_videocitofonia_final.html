@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ – Videocitofonia: Estensione Garanzia &amp; KASKO</title>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+  <style>
+    :root{
+      --bt-orange:#f06400;
+      --bg:#f6f7f9;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --border:#e5e7eb;
+      --shadow:0 10px 30px rgba(0,0,0,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:var(--bg);
+    }
+    a{color:inherit}
+    .topbar{
+      background:#fff;
+      border-bottom:4px solid var(--bt-orange);
+      position:sticky;
+      top:0;
+      z-index:20;
+    }
+    .topbar-inner{
+      max-width:1200px;
+      margin:0 auto;
+      padding:16px 18px;
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:260px;
+    }
+    .brand img{
+      height:32px;
+      width:auto;
+      display:block;
+    }
+    .titlewrap{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .pagetitle{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:.2px;
+      line-height:1.15;
+    }
+    .subtitle{
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    .page{
+      max-width:1200px;
+      margin:0 auto;
+      padding:22px 18px 60px;
+    }
+    .layout{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:18px;
+      align-items:start;
+    }
+
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .sidebar{
+      padding:18px;
+      position:sticky;
+      top:92px;
+    }
+    .side-title{
+      font-size:16px;
+      font-weight:800;
+      margin:0 0 6px;
+    }
+    .side-hint{
+      margin:0 0 12px;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .pilllist{display:flex; flex-direction:column; gap:10px; margin-top:10px;}
+    .pill{
+      width:100%;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:12px;
+      padding:10px 12px;
+      cursor:pointer;
+      font-weight:700;
+      font-size:13px;
+      text-align:left;
+      transition: transform .12s ease, border-color .12s ease, box-shadow .12s ease;
+    }
+    .pill:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,.06)}
+    .pill.active{border-color:var(--bt-orange); box-shadow:0 10px 22px rgba(240,100,0,.10)}
+    .pill:disabled{opacity:.55; cursor:not-allowed; transform:none; box-shadow:none}
+
+    .main{
+      padding:18px;
+    }
+    .toolbar{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+    .search{
+      flex:1 1 420px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      padding:10px 12px;
+      background:#fff;
+    }
+    .search input{
+      border:none; outline:none;
+      width:100%;
+      font-size:14px;
+      background:transparent;
+    }
+    .btn{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 14px;
+      background:#fff;
+      cursor:pointer;
+      font-weight:800;
+      font-size:13px;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 10px 22px rgba(0,0,0,.06)}
+    .btn.orange{
+      background:var(--bt-orange);
+      border-color:var(--bt-orange);
+      color:#fff;
+    }
+    .btn:disabled{opacity:.55; cursor:not-allowed; transform:none; box-shadow:none}
+
+    .resultsline{
+      margin:10px 2px 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .msg{
+      margin-top:10px;
+      border-radius:14px;
+      border:1px solid #fecaca;
+      background:#fff1f2;
+      padding:12px;
+      color:#991b1b;
+      font-weight:700;
+      display:none;
+    }
+
+    .faq-list{margin-top:12px; display:flex; flex-direction:column; gap:12px;}
+    details.faq{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 12px 28px rgba(0,0,0,.05);
+    }
+    details.faq summary{
+      list-style:none;
+      cursor:pointer;
+      padding:14px 14px;
+      font-weight:900;
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+    details.faq summary::-webkit-details-marker{display:none}
+    .chev{
+      width:18px; height:18px; flex:0 0 18px;
+      margin-top:1px;
+      transition: transform .18s ease;
+      color:var(--bt-orange);
+    }
+    details[open] .chev{transform:rotate(90deg)}
+    .faq-body{
+      padding:0 14px 14px 42px;
+      color:#111827;
+      line-height:1.5;
+      font-size:14px;
+    }
+    .tags{
+      margin-top:10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .tag{
+      font-size:11px;
+      padding:5px 8px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      color:var(--muted);
+      background:#fff;
+      font-weight:800;
+    }
+
+    .askbox{
+      margin-top:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding:14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background:#fff;
+      box-shadow:0 12px 28px rgba(0,0,0,.05);
+    }
+    .asktext h4{margin:0; font-size:14px; font-weight:900}
+    .asktext p{margin:2px 0 0; font-size:12px; color:var(--muted)}
+    .askbtn{white-space:nowrap}
+
+    /* Topic chooser (RIGHT side) */
+    .topic-chooser{
+      margin-top:12px;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 860px){
+      .layout{grid-template-columns: 1fr}
+      .sidebar{position:relative; top:auto}
+      .topic-chooser{grid-template-columns:1fr}
+      .brand{min-width:auto}
+    }
+    .topiccard{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:16px;
+      padding:16px 16px 14px;
+      box-shadow:0 12px 28px rgba(0,0,0,.05);
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      text-align:left;
+      position:relative;
+      overflow:hidden;
+      min-height:104px;
+    }
+    .topiccard:hover{transform:translateY(-1px); box-shadow:0 16px 34px rgba(0,0,0,.08)}
+    .topiccard:focus{outline:3px solid rgba(240,100,0,.25); outline-offset:2px}
+    .topiccard .t-title{font-weight:1000; font-size:15px; line-height:1.15}
+    .topiccard .t-code{display:block; margin-top:6px; font-weight:900; color:var(--bt-orange); font-size:12px}
+    .topiccard .t-desc{margin-top:10px; color:var(--muted); font-size:12px; line-height:1.35}
+
+    .topicbar{
+      display:none;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:12px;
+      padding:12px 12px;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:14px;
+      box-shadow:0 12px 28px rgba(0,0,0,.05);
+    }
+    .topicbar .current{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+    .topicbar .current strong{font-size:14px}
+    .topicbar .current span{font-size:12px; color:var(--muted); font-weight:800}
+
+    /* Modal */
+    .overlay{
+      position:fixed; inset:0;
+      background:rgba(0,0,0,.50);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:50;
+      padding:22px;
+    }
+    .modal{
+      width:min(860px, 96vw);
+      background:#fff;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.4);
+      box-shadow:0 30px 80px rgba(0,0,0,.35);
+      overflow:hidden;
+      transform: translateY(6px) scale(.98);
+      opacity:0;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .overlay.show .modal{
+      transform: translateY(0) scale(1);
+      opacity:1;
+    }
+    .modal-header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:16px 16px 12px;
+      border-bottom:1px solid var(--border);
+    }
+    .modal-header h3{
+      margin:0;
+      font-size:16px;
+      font-weight:1000;
+    }
+
+    .close{
+      width:34px; height:34px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      display:grid;
+      place-items:center;
+      transition: transform .14s ease, box-shadow .14s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .close:hover{transform:rotate(90deg); box-shadow:0 10px 22px rgba(0,0,0,.08)}
+    .close svg{width:16px; height:16px}
+
+    .modal-body{padding:14px 16px 18px}
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:10px;
+    }
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .field label{
+      font-size:11px;
+      color:var(--muted);
+      font-weight:900;
+    }
+    .field input, .field select, .field textarea{
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:10px 12px;
+      font-size:13px;
+      outline:none;
+      background:#fff;
+    }
+    .field textarea{min-height:120px; resize:vertical}
+    .actions{
+      margin-top:12px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-start;
+    }
+    .mini-note{
+      margin-top:8px;
+      font-size:12px;
+      color:var(--muted);
+      font-weight:700;
+    }
+
+    .toast{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:60;
+      background:#111827;
+      color:#fff;
+      padding:10px 12px;
+      border-radius:14px;
+      box-shadow:0 18px 40px rgba(0,0,0,.25);
+      display:none;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      font-size:13px;
+    }
+    .toast.show{display:flex; animation: pop .18s ease}
+    @keyframes pop{from{transform:translateY(8px); opacity:.3} to{transform:translateY(0); opacity:1}}
+    .toast .ok{
+      background:#fff;
+      color:#111827;
+      border:none;
+      border-radius:10px;
+      padding:6px 10px;
+      font-weight:1000;
+      cursor:pointer;
+    }
+
+    /* Simple OK dialog overlay */
+    .okoverlay{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      background:rgba(0,0,0,.55);
+      z-index:70;
+      padding:22px;
+    }
+    .okcard{
+      width:min(520px, 92vw);
+      background:#fff;
+      border-radius:18px;
+      border:1px solid var(--border);
+      box-shadow:0 30px 80px rgba(0,0,0,.35);
+      padding:16px;
+    }
+    .okcard h4{margin:0; font-weight:1000; font-size:16px}
+    .okcard p{margin:8px 0 12px; color:var(--muted); font-weight:700; font-size:13px; line-height:1.4}
+    .okactions{display:flex; justify-content:flex-end}
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <img src="BT_Service.jpg" alt="BTicino Service" />
+        <div class="titlewrap">
+          <div class="pagetitle">FAQ – Videocitofonia: Estensione Garanzia &amp; KASKO</div>
+          <div class="subtitle">Cerca una risposta o invia una domanda al team.</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="layout">
+      <!-- SIDEBAR -->
+      <aside class="card sidebar">
+        <h3 class="side-title">Tematiche</h3>
+        <p id="sideHint" class="side-hint">Seleziona prima un <b>Topic</b> a destra.</p>
+
+        <div class="pilllist" id="catList">
+          <!-- categorie -->
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <section class="card main">
+        <div class="toolbar">
+          <div class="search">
+            <input id="searchInput" type="text" placeholder="Seleziona un Topic per iniziare…" disabled />
+          </div>
+          <button id="resetBtn" class="btn" disabled>Reset</button>
+        </div>
+
+        <div id="topicBar" class="topicbar">
+          <div class="current">
+            <strong id="currentTopicTitle"></strong>
+            <span id="currentTopicCode"></span>
+          </div>
+          <button id="changeTopicBtn" class="btn">Cambia Topic</button>
+        </div>
+
+        <div id="resultsLine" class="resultsline"></div>
+        <div id="msgBox" class="msg"></div>
+
+        <!-- TOPIC chooser (shown before selecting a topic) -->
+        <div id="topicChooser" class="topic-chooser" aria-label="Selezione topic">
+          <button class="topiccard" type="button" data-topic="estensione">
+            <div class="t-title">Estensione di Garanzia</div>
+            <span class="t-code">(art. BT-4390)</span>
+            <div class="t-desc">Copertura 5 anni per difettosità di fabbricazione (attivazione entro 12 mesi).</div>
+          </button>
+          <button class="topiccard" type="button" data-topic="kasko">
+            <div class="t-title">KASKO Videocitofonia</div>
+            <span class="t-code">(art. BT-KASKO13V)</span>
+            <div class="t-desc">Copertura 1 anno contro danni accidentali: vandalismi, sovratensioni, eventi atmosferici.</div>
+          </button>
+        </div>
+
+        <!-- FAQ list -->
+        <div id="faqList" class="faq-list" style="display:none;"></div>
+
+        <!-- Ask box -->
+        <div class="askbox">
+          <div class="asktext">
+            <h4>Non hai trovato la risposta?</h4>
+            <p>Invia la domanda: riceverai riscontro via email.</p>
+          </div>
+          <button id="openAskBtn" class="btn orange askbtn">Fai una domanda</button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- ASK MODAL -->
+  <div id="overlay" class="overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal-header">
+        <h3 id="modalTitle">Invia una domanda</h3>
+        <button id="closeAskBtn" class="close" type="button" aria-label="Chiudi">
+          <!-- animated X (rotation on hover) -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <path d="M18 6L6 18"></path>
+            <path d="M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="askForm">
+          <div class="grid">
+            <div class="field">
+              <label for="name">Nome e Cognome</label>
+              <input id="name" name="name" type="text" placeholder="Nome e Cognome" required />
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="nome.cognome@bticino.com" required />
+            </div>
+            <div class="field">
+              <label for="role">Ruolo</label>
+              <select id="role" name="role" required>
+                <option value="" selected>Ruolo…</option>
+                <option>FTC R.E.</option>
+                <option>FTC Industry</option>
+                <option>Installatore</option>
+                <option>CAT</option>
+                <option>Altro</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="category">Categoria</label>
+              <select id="category" name="category" required>
+                <option value="" selected>Categoria…</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field" style="margin-top:10px;">
+            <label for="question">Domanda</label>
+            <textarea id="question" name="question" placeholder="Scrivi qui la tua domanda…" required></textarea>
+          </div>
+
+          <div class="mini-note" id="authNote"></div>
+
+          <div class="actions">
+            <button id="sendBtn" class="btn orange" type="submit">Invia</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MINI TOAST -->
+  <div id="toast" class="toast">
+    <span id="toastText">Inviato ✔</span>
+    <button id="toastOk" class="ok" type="button">OK</button>
+  </div>
+
+  <!-- OK DIALOG (closes popup only after OK) -->
+  <div id="okOverlay" class="okoverlay" aria-hidden="true">
+    <div class="okcard">
+      <h4 id="okTitle">Messaggio inviato</h4>
+      <p id="okText">Grazie! Abbiamo ricevuto la tua richiesta. Ti risponderemo via email.</p>
+      <div class="okactions">
+        <button id="okBtn" class="btn orange" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // =================== CONFIG ===================
+    const FAQS_URL = "./faqs.json";
+    const ALLOWED_EMAILS_URL = "./allowed_emails.json";
+
+    // EmailJS (modifica se necessario)
+    const EMAILJS_PUBLIC_KEY = "vroneqwVOfxcazawc";
+    const EMAILJS_SERVICE_ID = "Sicuri_&_Connessi";
+    const EMAILJS_TEMPLATE_ID = "template_sjl0d24";
+
+    // =================== STATE ===================
+    let ALL_FAQS = [];
+    let allowedEmails = new Set();
+    let selectedTopicKey = null; // "estensione" | "kasko"
+    let selectedCategory = "Tutte";
+
+    const el = (id) => document.getElementById(id);
+
+    const msgBox = el("msgBox");
+    const faqList = el("faqList");
+    const catList = el("catList");
+    const searchInput = el("searchInput");
+    const resetBtn = el("resetBtn");
+    const resultsLine = el("resultsLine");
+
+    const topicChooser = el("topicChooser");
+    const topicBar = el("topicBar");
+    const currentTopicTitle = el("currentTopicTitle");
+    const currentTopicCode = el("currentTopicCode");
+    const changeTopicBtn = el("changeTopicBtn");
+    const sideHint = el("sideHint");
+
+    // Ask modal
+    const overlay = el("overlay");
+    const openAskBtn = el("openAskBtn");
+    const closeAskBtn = el("closeAskBtn");
+    const askForm = el("askForm");
+    const sendBtn = el("sendBtn");
+    const authNote = el("authNote");
+    const categorySelect = el("category");
+
+    // Toast + OK overlay
+    const toast = el("toast");
+    const toastOk = el("toastOk");
+    const okOverlay = el("okOverlay");
+    const okBtn = el("okBtn");
+
+    // =================== HELPERS ===================
+    function showMsg(text){
+      msgBox.style.display = "block";
+      msgBox.textContent = text;
+    }
+    function hideMsg(){
+      msgBox.style.display = "none";
+      msgBox.textContent = "";
+    }
+
+    function normalizeEmail(email){
+      return (email || "").trim().toLowerCase();
+    }
+
+    function unique(arr){
+      return [...new Set(arr)];
+    }
+
+    function getTopicMeta(topicKey){
+      if(topicKey === "estensione"){
+        return { title: "Estensione di Garanzia", code: "(art. BT-4390)" };
+      }
+      if(topicKey === "kasko"){
+        return { title: "KASKO Videocitofonia", code: "(art. BT-KASKO13V)" };
+      }
+      return { title: "", code: "" };
+    }
+
+    function getFilteredFaqs(){
+      const q = (searchInput.value || "").trim().toLowerCase();
+
+      let list = ALL_FAQS;
+
+      if(selectedTopicKey){
+        list = list.filter(f => (f.topic_key || "") === selectedTopicKey);
+      } else {
+        return [];
+      }
+
+      if(selectedCategory && selectedCategory !== "Tutte"){
+        list = list.filter(f => (f.category || "") === selectedCategory);
+      }
+
+      if(q){
+        list = list.filter(f => {
+          const hay = [
+            f.question, f.answer, f.category, f.topic, ...(f.tags || [])
+          ].join(" ").toLowerCase();
+          return hay.includes(q);
+        });
+      }
+
+      return list;
+    }
+
+    function computeCategories(){
+      if(!selectedTopicKey) return [];
+      const list = ALL_FAQS.filter(f => (f.topic_key || "") === selectedTopicKey);
+      const cats = unique(list.map(f => f.category).filter(Boolean)).sort((a,b)=>a.localeCompare(b,"it"));
+      return ["Tutte", ...cats];
+    }
+
+    // =================== RENDER ===================
+    function renderCategories(){
+      catList.innerHTML = "";
+      const cats = computeCategories();
+
+      if(!selectedTopicKey){
+        const disabledBtn = document.createElement("button");
+        disabledBtn.className = "pill";
+        disabledBtn.disabled = true;
+        disabledBtn.textContent = "Categorie (dopo scelta Topic)";
+        catList.appendChild(disabledBtn);
+        return;
+      }
+
+      cats.forEach(cat => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "pill" + (cat === selectedCategory ? " active" : "");
+        btn.textContent = cat;
+        btn.addEventListener("click", () => {
+          selectedCategory = cat;
+          renderAll();
+        });
+        catList.appendChild(btn);
+      });
+
+      // also update ask form categories
+      categorySelect.innerHTML = '<option value="" selected>Categoria…</option>' +
+        cats.filter(c=>c!=="Tutte").map(c => `<option>${escapeHtml(c)}</option>`).join("");
+    }
+
+    function escapeHtml(str){
+      return (str || "").replace(/[&<>"']/g, s => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+      }[s]));
+    }
+
+    function renderFaqs(){
+      const list = getFilteredFaqs();
+      const totalForTopic = selectedTopicKey
+        ? ALL_FAQS.filter(f => (f.topic_key||"")===selectedTopicKey).length
+        : 0;
+
+      resultsLine.textContent = selectedTopicKey
+        ? `Risultati: ${list.length} / ${totalForTopic} · Topic: ${getTopicMeta(selectedTopicKey).title} ${getTopicMeta(selectedTopicKey).code}`
+        : "";
+
+      faqList.innerHTML = "";
+      list.forEach(f => {
+        const det = document.createElement("details");
+        det.className = "faq";
+
+        const sum = document.createElement("summary");
+        sum.innerHTML = `
+          <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6"></path>
+          </svg>
+          <span>${escapeHtml(f.question)}</span>
+        `;
+
+        const body = document.createElement("div");
+        body.className = "faq-body";
+        body.innerHTML = `
+          <div>${formatAnswer(f.answer || "")}</div>
+          <div class="tags">
+            <span class="tag">${escapeHtml(f.category || "—")}</span>
+            <span class="tag">${escapeHtml(getTopicMeta(selectedTopicKey).title)}</span>
+            ${(f.tags||[]).slice(0,6).map(t=>`<span class="tag">${escapeHtml(t)}</span>`).join("")}
+          </div>
+        `;
+
+        det.appendChild(sum);
+        det.appendChild(body);
+        faqList.appendChild(det);
+      });
+
+      faqList.style.display = selectedTopicKey ? "flex" : "none";
+    }
+
+    function formatAnswer(answer){
+      // support simple bullet list: lines starting with "- "
+      const lines = (answer || "").split("\n");
+      const hasBullets = lines.some(l => l.trim().startsWith("- "));
+      if(!hasBullets){
+        return escapeHtml(answer).replace(/\n/g,"<br>");
+      }
+      let html = "";
+      let inList = false;
+      for(const l of lines){
+        const t = l.trim();
+        if(t.startsWith("- ")){
+          if(!inList){ html += "<ul>"; inList = true; }
+          html += "<li>" + escapeHtml(t.slice(2)) + "</li>";
+        } else {
+          if(inList){ html += "</ul>"; inList = false; }
+          if(t){ html += "<p style=\"margin:8px 0;\">" + escapeHtml(t) + "</p>"; }
+        }
+      }
+      if(inList) html += "</ul>";
+      return html;
+    }
+
+    function renderTopicUI(){
+      if(!selectedTopicKey){
+        topicChooser.style.display = "grid";
+        topicBar.style.display = "none";
+        searchInput.disabled = true;
+        resetBtn.disabled = true;
+        sideHint.innerHTML = 'Seleziona prima un <b>Topic</b> a destra.';
+        resultsLine.textContent = "";
+        faqList.style.display = "none";
+        selectedCategory = "Tutte";
+      } else {
+        topicChooser.style.display = "none";
+        topicBar.style.display = "flex";
+        const meta = getTopicMeta(selectedTopicKey);
+        currentTopicTitle.textContent = meta.title;
+        currentTopicCode.textContent = meta.code;
+        searchInput.disabled = false;
+        resetBtn.disabled = false;
+        sideHint.textContent = "Categorie (si aggiornano in base al Topic)";
+      }
+    }
+
+    function renderAll(){
+      renderTopicUI();
+      renderCategories();
+      renderFaqs();
+    }
+
+    // =================== TOPIC ACTIONS ===================
+    function selectTopic(topicKey){
+      selectedTopicKey = topicKey;
+      selectedCategory = "Tutte";
+      searchInput.value = "";
+      hideMsg();
+      renderAll();
+      // scroll to top of main card
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function clearTopic(){
+      selectedTopicKey = null;
+      selectedCategory = "Tutte";
+      searchInput.value = "";
+      hideMsg();
+      renderAll();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    topicChooser.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-topic]");
+      if(!btn) return;
+      selectTopic(btn.getAttribute("data-topic"));
+    });
+    changeTopicBtn.addEventListener("click", clearTopic);
+
+    // =================== DATA LOADING ===================
+    async function loadFaqs(){
+      try{
+        const res = await fetch(FAQS_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error(`HTTP ${res.status} nel caricamento di ${FAQS_URL}`);
+        const json = await res.json();
+        ALL_FAQS = Array.isArray(json) ? json : [];
+      }catch(err){
+        ALL_FAQS = [];
+        showMsg("Errore caricamento FAQ\n" + String(err.message || err));
+      } finally {
+        renderAll();
+      }
+    }
+
+    async function loadAllowedEmails(){
+      try{
+        const res = await fetch(ALLOWED_EMAILS_URL, { cache: "no-store" });
+        if(!res.ok) throw new Error(`HTTP ${res.status} nel caricamento di ${ALLOWED_EMAILS_URL}`);
+        const json = await res.json();
+        const list = Array.isArray(json) ? json : (json.allowed || []);
+        allowedEmails = new Set(list.map(normalizeEmail));
+      }catch(err){
+        allowedEmails = new Set();
+        // Non blocco l'app: la validazione email rimane su dominio
+        authNote.textContent = "Nota: impossibile caricare la whitelist email. Verrà applicato solo il controllo dominio BTicino/Legrand.";
+      }
+    }
+
+    // =================== SEARCH / RESET ===================
+    searchInput.addEventListener("input", () => {
+      if(!selectedTopicKey) return;
+      renderFaqs();
+    });
+
+    resetBtn.addEventListener("click", () => {
+      if(!selectedTopicKey) return;
+      searchInput.value = "";
+      selectedCategory = "Tutte";
+      renderAll();
+    });
+
+    // =================== ASK MODAL ===================
+    function openModal(){
+      overlay.style.display = "flex";
+      requestAnimationFrame(() => overlay.classList.add("show"));
+      overlay.setAttribute("aria-hidden", "false");
+      hideMsg();
+      // prefill category options from current topic
+      renderCategories();
+      // auth hint
+      authNote.textContent = "Invio consentito solo da email aziendali BTicino/Legrand e, se presente, nella whitelist.";
+    }
+    function closeModal(){
+      overlay.classList.remove("show");
+      overlay.setAttribute("aria-hidden", "true");
+      setTimeout(() => { overlay.style.display = "none"; }, 160);
+    }
+
+    openAskBtn.addEventListener("click", openModal);
+    closeAskBtn.addEventListener("click", closeModal);
+
+    overlay.addEventListener("click", (e) => {
+      // click outside modal closes (only if not waiting OK)
+      if(e.target === overlay && okOverlay.style.display !== "flex"){
+        closeModal();
+      }
+    });
+
+    // Toast
+    function showToast(text){
+      el("toastText").textContent = text || "Operazione completata";
+      toast.classList.add("show");
+      toast.style.display = "flex";
+    }
+    function hideToast(){
+      toast.classList.remove("show");
+      toast.style.display = "none";
+    }
+    toastOk.addEventListener("click", hideToast);
+
+    // OK dialog (blocks closing of ask popup until OK)
+    function showOkDialog(){
+      rememberedClose = closeModal;
+      okOverlay.style.display = "flex";
+      okOverlay.setAttribute("aria-hidden","false");
+    }
+    function hideOkDialog(){
+      okOverlay.style.display = "none";
+      okOverlay.setAttribute("aria-hidden","true");
+    }
+
+    okBtn.addEventListener("click", () => {
+      hideOkDialog();
+      // only now close the ask popup
+      closeModal();
+      // reset form
+      askForm.reset();
+    });
+
+    // =================== EMAIL VALIDATION + SEND ===================
+    function isAllowedDomain(email){
+      const d = (email.split("@")[1] || "").toLowerCase();
+      return ["bticino.com","legrand.com","legrand-ext.com"].includes(d);
+    }
+
+    function isAllowedEmail(email){
+      const n = normalizeEmail(email);
+      if(!n) return false;
+      // if whitelist loaded and non-empty: require match
+      if(allowedEmails && allowedEmails.size > 0){
+        return allowedEmails.has(n);
+      }
+      // fallback: only domain check
+      return isAllowedDomain(n);
+    }
+
+    function initEmailJS(){
+      try{
+        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+      }catch(e){
+        // ignore
+      }
+    }
+
+    askForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const name = el("name").value.trim();
+      const email = normalizeEmail(el("email").value);
+      const role = el("role").value;
+      const category = el("category").value;
+      const question = el("question").value.trim();
+
+      if(!isAllowedDomain(email)){
+        showMsg("Invio non consentito: usa un indirizzo email aziendale BTicino/Legrand.");
+        return;
+      }
+      if(allowedEmails.size > 0 && !allowedEmails.has(email)){
+        showMsg("Invio non consentito: questa email non è autorizzata. Usa la tua email aziendale BTicino/Legrand.");
+        return;
+      }
+
+      if(!selectedTopicKey){
+        showMsg("Seleziona un Topic prima di inviare la domanda.");
+        return;
+      }
+
+      // prepare payload
+      const payload = {
+        name,
+        email,
+        role,
+        category,
+        topic: getTopicMeta(selectedTopicKey).title + " " + getTopicMeta(selectedTopicKey).code,
+        question,
+        page: window.location.href,
+        timestamp: new Date().toISOString()
+      };
+
+      try{
+        sendBtn.disabled = true;
+        sendBtn.textContent = "Invio…";
+
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
+
+        hideMsg();
+        showToast("Domanda inviata ✔");
+        showOkDialog(); // popup closes only after OK
+      }catch(err){
+        showMsg("Errore nell'invio. Riprova o contatta il team.\n" + String(err?.text || err?.message || err));
+      }finally{
+        sendBtn.disabled = false;
+        sendBtn.textContent = "Invia";
+      }
+    });
+
+    // =================== INIT ===================
+    initEmailJS();
+    loadAllowedEmails();
+    loadFaqs();
+    renderAll();
+  </script>
+</body>
+</html>
