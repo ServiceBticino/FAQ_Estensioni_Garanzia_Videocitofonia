@@ -596,6 +596,7 @@
     const EMAILJS_PUBLIC_KEY = "vroneqwVOfxcazawc";
     const EMAILJS_SERVICE_ID = "Sicuri_&_Connessi";
     const EMAILJS_TEMPLATE_ID = "template_sjl0d24";
+    const ADMIN_TO_EMAIL = "andrea.cattabiani@bticino.com";
 
     // =================== STATE ===================
     let ALL_FAQS = [];
@@ -1002,16 +1003,15 @@
       }
 
       // prepare payload
-      const payload = {
-        name,
-        email,
-        role,
-        category,
-        topic: getTopicMeta(selectedTopicKey).title + " " + getTopicMeta(selectedTopicKey).code,
-        question,
-        page: window.location.href,
-        timestamp: new Date().toISOString()
-      };
+     const payload = {
+  to_email: ADMIN_TO_EMAIL, // <-- la tua mail fissa
+  from_name: document.getElementById("name").value.trim(),
+  from_email: email,
+  role: document.getElementById("role").value,
+  category: document.getElementById("category").value,
+  message: document.getElementById("message").value.trim(),
+  time: new Date().toLocaleString("it-IT")
+};
 
       try{
         sendBtn.disabled = true;
