@@ -499,9 +499,8 @@
 
         <!-- FAQ list -->
         <div id="faqList" class="faq-list" style="display:none;"></div>
-
         <!-- Ask box -->
-        <div class="askbox">
+        <div id="askBox" class="askbox" style="display:none;">
           <div class="asktext">
             <h4>Non hai trovato la risposta?</h4>
             <p>Invia la domanda: riceverai riscontro via email.</p>
@@ -621,6 +620,7 @@
     const currentTopicCode = el("currentTopicCode");
     const changeTopicBtn = el("changeTopicBtn");
     const sideHint = el("sideHint");
+    const askBox = el("askBox");
 
     // Ask modal
     const overlay = el("overlay");
@@ -805,27 +805,33 @@
     }
 
     function renderTopicUI(){
-      if(!selectedTopicKey){
-        topicChooser.style.display = "grid";
-        topicBar.style.display = "none";
-        searchInput.disabled = true;
-        resetBtn.disabled = true;
-        sideHint.innerHTML = 'Seleziona prima un <b>Topic</b> a destra.';
-        resultsLine.textContent = "";
-        faqList.style.display = "none";
-        selectedCategory = "Tutte";
-      } else {
-        topicChooser.style.display = "none";
-        topicBar.style.display = "flex";
-        const meta = getTopicMeta(selectedTopicKey);
-        currentTopicTitle.textContent = meta.title;
-        currentTopicCode.textContent = meta.code;
-        searchInput.disabled = false;
-        resetBtn.disabled = false;
-        sideHint.textContent = "Categorie (si aggiornano in base al Topic)";
-      }
-    }
+  if(!selectedTopicKey){
+    topicChooser.style.display = "grid";
+    topicBar.style.display = "none";
+    searchInput.disabled = true;
+    resetBtn.disabled = true;
+    sideHint.innerHTML = 'Seleziona prima un <b>Topic</b> a destra.';
+    resultsLine.textContent = "";
+    faqList.style.display = "none";
+    selectedCategory = "Tutte";
 
+    // ✅ NUOVO: nascondi CTA domanda nella schermata iniziale
+    if (askBox) askBox.style.display = "none";
+
+  } else {
+    topicChooser.style.display = "none";
+    topicBar.style.display = "flex";
+    const meta = getTopicMeta(selectedTopicKey);
+    currentTopicTitle.textContent = meta.title;
+    currentTopicCode.textContent = meta.code;
+    searchInput.disabled = false;
+    resetBtn.disabled = false;
+    sideHint.textContent = "Categorie (si aggiornano in base al Topic)";
+
+    // ✅ NUOVO: mostra CTA domanda solo quando sei dentro un Topic
+    if (askBox) askBox.style.display = "flex";
+  }
+}
     function renderAll(){
       renderTopicUI();
       renderCategories();
