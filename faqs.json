@@ -142,6 +142,17 @@
     "topic_key": "kasko",
     "topic_title": "KASKO Videocitofonia"
   },
+   {
+    "id": "vc-kasko-009",
+    "topic": "KASKO Videocitofonia",
+    "topic_code": "BT-KASKO13V",
+    "category": "Vendita",
+    "tags": ["Vendita", "Grossista", "Installatore", "Acquisto", "Modalità"],
+    "question": "Cosa è escluso dalla KASKO Videocitofonia?",
+    "answer": "L'articolo <STRONG>BT-KASKO13v<\STRONG> è un articolo regolarmente a catalogo Bticino e a Listino Metel.:\n- L'installatore lo può quindi acquistare presso qualsiasi grossista o rivendita di materiale elettrico nostro partner",
+    "topic_key": "kasko",
+    "topic_title": "KASKO Videocitofonia"
+  },
   {
     "id": "vc-common-001",
     "topic": "Estensione di Garanzia",
