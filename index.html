@@ -782,12 +782,36 @@
       faqList.style.display = selectedTopicKey ? "flex" : "none";
     }
 
-    function formatAnswer(answer){
-      const lines = (answer || "").split("\n");
-      const hasBullets = lines.some(l => l.trim().startsWith("- "));
-      if(!hasBullets){
-        return escapeHtml(answer).replace(/\n/g,"<br>");
-      }
+   function formatAnswer(answer){
+  const a = (answer || "").trim();
+
+  // Se sembra HTML (contiene tag), renderizzalo direttamente
+  if (/<[a-z][\s\S]*>/i.test(a)) {
+    return a;
+  }
+
+  // Altrimenti: supporto bullet "- " e testo normale
+  const lines = a.split("\n");
+  const hasBullets = lines.some(l => l.trim().startsWith("- "));
+  if(!hasBullets){
+    return escapeHtml(a).replace(/\n/g,"<br>");
+  }
+
+  let html = "";
+  let inList = false;
+  for(const l of lines){
+    const t = l.trim();
+    if(t.startsWith("- ")){
+      if(!inList){ html += "<ul>"; inList = true; }
+      html += "<li>" + escapeHtml(t.slice(2)) + "</li>";
+    } else {
+      if(inList){ html += "</ul>"; inList = false; }
+      if(t){ html += "<p style=\"margin:8px 0;\">" + escapeHtml(t) + "</p>"; }
+    }
+  }
+  if(inList) html += "</ul>";
+  return html;
+}
       let html = "";
       let inList = false;
       for(const l of lines){
