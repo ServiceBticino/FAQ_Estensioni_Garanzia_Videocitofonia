@@ -121,9 +121,7 @@
     .pill.active{border-color:var(--bt-orange); box-shadow:0 10px 22px rgba(240,100,0,.10)}
     .pill:disabled{opacity:.55; cursor:not-allowed; transform:none; box-shadow:none}
 
-    .main{
-      padding:18px;
-    }
+    .main{ padding:18px; }
     .toolbar{
       display:flex;
       gap:10px;
@@ -332,7 +330,6 @@
       font-size:16px;
       font-weight:1000;
     }
-
     .close{
       width:34px; height:34px;
       border-radius:12px;
@@ -387,7 +384,7 @@
       font-weight:700;
     }
 
-    /* Toast (con OK, resta finché non clicchi) */
+    /* Toast auto-close */
     .toast{
       position:fixed;
       right:16px;
@@ -459,7 +456,6 @@
       <aside class="card sidebar">
         <h3 class="side-title">Tematiche</h3>
         <p id="sideHint" class="side-hint">Seleziona prima un <b>Topic</b> a destra.</p>
-
         <div class="pilllist" id="catList"></div>
       </aside>
 
@@ -499,13 +495,14 @@
 
         <!-- FAQ list -->
         <div id="faqList" class="faq-list" style="display:none;"></div>
-        <!-- Ask box -->
+
+        <!-- Ask box (solo dentro Topic) -->
         <div id="askBox" class="askbox" style="display:none;">
           <div class="asktext">
             <h4>Non hai trovato la risposta?</h4>
             <p>Invia la domanda: riceverai riscontro via email.</p>
           </div>
-          <button id="openAskBtn" class="btn orange askbtn">Fai una domanda</button>
+          <button id="openAskBtn" class="btn orange askbtn" type="button">Fai una domanda</button>
         </div>
       </section>
     </div>
@@ -571,13 +568,13 @@
     </div>
   </div>
 
-  <!-- MINI TOAST (con OK) -->
+  <!-- TOAST -->
   <div id="toast" class="toast" aria-hidden="true">
     <span id="toastText">Domanda inviata ✔</span>
     <button id="toastOk" class="ok" type="button">OK</button>
   </div>
 
-  <!-- OK DIALOG (centrale) -->
+  <!-- OK DIALOG -->
   <div id="okOverlay" class="okoverlay" aria-hidden="true">
     <div class="okcard">
       <h4 id="okTitle">Domanda inviata</h4>
@@ -602,8 +599,9 @@
     // =================== STATE ===================
     let ALL_FAQS = [];
     let allowedEmails = new Set();
-    let selectedTopicKey = null; // "estensione" | "kasko"
+    let selectedTopicKey = null;
     let selectedCategory = "Tutte";
+    let waitingOk = false;
 
     const el = (id) => document.getElementById(id);
 
@@ -622,7 +620,6 @@
     const sideHint = el("sideHint");
     const askBox = el("askBox");
 
-    // Ask modal
     const overlay = el("overlay");
     const openAskBtn = el("openAskBtn");
     const closeAskBtn = el("closeAskBtn");
@@ -631,15 +628,13 @@
     const authNote = el("authNote");
     const categorySelect = el("category");
 
-    // Toast + OK overlay
     const toast = el("toast");
     const toastText = el("toastText");
     const toastOk = el("toastOk");
     const okOverlay = el("okOverlay");
     const okBtn = el("okBtn");
 
-    // Flag: se vero, non permettere chiusura del form finché non clicchi OK
-    let waitingOk = false;
+    let toastTimer = null;
 
     // =================== HELPERS ===================
     function showMsg(text){
@@ -660,18 +655,49 @@
     }
 
     function getTopicMeta(topicKey){
-      if(topicKey === "estensione"){
-        return { title: "Estensione di Garanzia", code: "(art. BT-4390)" };
-      }
-      if(topicKey === "kasko"){
-        return { title: "KASKO Videocitofonia", code: "(art. BT-KASKO13V)" };
-      }
+      if(topicKey === "estensione") return { title: "Estensione di Garanzia", code: "(art. BT-4390)" };
+      if(topicKey === "kasko") return { title: "KASKO Videocitofonia", code: "(art. BT-KASKO13V)" };
       return { title: "", code: "" };
+    }
+
+    function escapeHtml(str){
+      return (str || "").replace(/[&<>"']/g, s => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
+      }[s]));
+    }
+
+    function formatAnswer(answer){
+      const a = (answer || "").trim();
+
+      // Se contiene tag HTML, renderizza direttamente
+      if (/<[a-z][\s\S]*>/i.test(a)) return a;
+
+      // Supporto bullet "- "
+      const lines = a.split("\n");
+      const hasBullets = lines.some(l => l.trim().startsWith("- "));
+      if(!hasBullets){
+        return escapeHtml(a).replace(/\n/g,"<br>");
+      }
+
+      let html = "";
+      let inList = false;
+
+      for(const l of lines){
+        const t = l.trim();
+        if(t.startsWith("- ")){
+          if(!inList){ html += "<ul>"; inList = true; }
+          html += "<li>" + escapeHtml(t.slice(2)) + "</li>";
+        } else {
+          if(inList){ html += "</ul>"; inList = false; }
+          if(t){ html += "<p style=\"margin:8px 0;\">" + escapeHtml(t) + "</p>"; }
+        }
+      }
+      if(inList) html += "</ul>";
+      return html;
     }
 
     function getFilteredFaqs(){
       const q = (searchInput.value || "").trim().toLowerCase();
-
       let list = ALL_FAQS;
 
       if(selectedTopicKey){
@@ -686,13 +712,10 @@
 
       if(q){
         list = list.filter(f => {
-          const hay = [
-            f.question, f.answer, f.category, f.topic, ...(f.tags || [])
-          ].join(" ").toLowerCase();
+          const hay = [f.question, f.answer, f.category, f.topic, ...(f.tags || [])].join(" ").toLowerCase();
           return hay.includes(q);
         });
       }
-
       return list;
     }
 
@@ -729,15 +752,9 @@
         catList.appendChild(btn);
       });
 
-      // also update ask form categories
+      // aggiorna anche il select nel form
       categorySelect.innerHTML = '<option value="" selected>Categoria…</option>' +
         cats.filter(c=>c!=="Tutte").map(c => `<option>${escapeHtml(c)}</option>`).join("");
-    }
-
-    function escapeHtml(str){
-      return (str || "").replace(/[&<>"']/g, s => ({
-        "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"
-      }[s]));
     }
 
     function renderFaqs(){
@@ -751,6 +768,7 @@
         : "";
 
       faqList.innerHTML = "";
+
       list.forEach(f => {
         const det = document.createElement("details");
         det.className = "faq";
@@ -782,80 +800,33 @@
       faqList.style.display = selectedTopicKey ? "flex" : "none";
     }
 
-   function formatAnswer(answer){
-  const a = (answer || "").trim();
-
-  // Se sembra HTML (contiene tag), renderizzalo direttamente
-  if (/<[a-z][\s\S]*>/i.test(a)) {
-    return a;
-  }
-
-  // Altrimenti: supporto bullet "- " e testo normale
-  const lines = a.split("\n");
-  const hasBullets = lines.some(l => l.trim().startsWith("- "));
-  if(!hasBullets){
-    return escapeHtml(a).replace(/\n/g,"<br>");
-  }
-
-  let html = "";
-  let inList = false;
-  for(const l of lines){
-    const t = l.trim();
-    if(t.startsWith("- ")){
-      if(!inList){ html += "<ul>"; inList = true; }
-      html += "<li>" + escapeHtml(t.slice(2)) + "</li>";
-    } else {
-      if(inList){ html += "</ul>"; inList = false; }
-      if(t){ html += "<p style=\"margin:8px 0;\">" + escapeHtml(t) + "</p>"; }
-    }
-  }
-  if(inList) html += "</ul>";
-  return html;
-}
-      let html = "";
-      let inList = false;
-      for(const l of lines){
-        const t = l.trim();
-        if(t.startsWith("- ")){
-          if(!inList){ html += "<ul>"; inList = true; }
-          html += "<li>" + escapeHtml(t.slice(2)) + "</li>";
-        } else {
-          if(inList){ html += "</ul>"; inList = false; }
-          if(t){ html += "<p style=\"margin:8px 0;\">" + escapeHtml(t) + "</p>"; }
-        }
-      }
-      if(inList) html += "</ul>";
-      return html;
-    }
-
     function renderTopicUI(){
-  if(!selectedTopicKey){
-    topicChooser.style.display = "grid";
-    topicBar.style.display = "none";
-    searchInput.disabled = true;
-    resetBtn.disabled = true;
-    sideHint.innerHTML = 'Seleziona prima un <b>Topic</b> a destra.';
-    resultsLine.textContent = "";
-    faqList.style.display = "none";
-    selectedCategory = "Tutte";
+      if(!selectedTopicKey){
+        topicChooser.style.display = "grid";
+        topicBar.style.display = "none";
+        searchInput.disabled = true;
+        resetBtn.disabled = true;
+        sideHint.innerHTML = 'Seleziona prima un <b>Topic</b> a destra.';
+        resultsLine.textContent = "";
+        faqList.style.display = "none";
+        selectedCategory = "Tutte";
 
-    // ✅ NUOVO: nascondi CTA domanda nella schermata iniziale
-    if (askBox) askBox.style.display = "none";
+        // CTA nascosta finché non si seleziona un topic
+        if (askBox) askBox.style.display = "none";
+      } else {
+        topicChooser.style.display = "none";
+        topicBar.style.display = "flex";
+        const meta = getTopicMeta(selectedTopicKey);
+        currentTopicTitle.textContent = meta.title;
+        currentTopicCode.textContent = meta.code;
+        searchInput.disabled = false;
+        resetBtn.disabled = false;
+        sideHint.textContent = "Categorie (si aggiornano in base al Topic)";
 
-  } else {
-    topicChooser.style.display = "none";
-    topicBar.style.display = "flex";
-    const meta = getTopicMeta(selectedTopicKey);
-    currentTopicTitle.textContent = meta.title;
-    currentTopicCode.textContent = meta.code;
-    searchInput.disabled = false;
-    resetBtn.disabled = false;
-    sideHint.textContent = "Categorie (si aggiornano in base al Topic)";
+        if (askBox) askBox.style.display = "flex";
+      }
+    }
 
-    // ✅ NUOVO: mostra CTA domanda solo quando sei dentro un Topic
-    if (askBox) askBox.style.display = "flex";
-  }
-}
     function renderAll(){
       renderTopicUI();
       renderCategories();
@@ -929,7 +900,7 @@
       renderAll();
     });
 
-    // =================== ASK MODAL (meccanica come la prima pagina) ===================
+    // =================== MODAL / TOAST / OK ===================
     function openModal(){
       overlay.style.display = "flex";
       requestAnimationFrame(() => overlay.classList.add("show"));
@@ -939,7 +910,6 @@
       renderCategories();
       authNote.textContent = "Invio consentito solo da email aziendali BTicino/Legrand e, se presente, nella whitelist.";
 
-      // reset stato conferma
       waitingOk = false;
       hideToast();
       hideOkDialog();
@@ -952,8 +922,9 @@
     }
 
     openAskBtn.addEventListener("click", openModal);
+
     closeAskBtn.addEventListener("click", () => {
-      if(waitingOk) return; // blocca chiusura finché non premi OK
+      if(waitingOk) return;
       closeModal();
     });
 
@@ -969,20 +940,24 @@
       }
     });
 
-    // Toast (resta finché non clicchi OK)
     function showToast(text){
       toastText.textContent = text || "Domanda inviata ✔";
       toast.classList.add("show");
       toast.style.display = "flex";
       toast.setAttribute("aria-hidden","false");
+
+      if(toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => hideToast(), 4000);
     }
+
     function hideToast(){
       toast.classList.remove("show");
       toast.style.display = "none";
       toast.setAttribute("aria-hidden","true");
+      if(toastTimer) clearTimeout(toastTimer);
+      toastTimer = null;
     }
 
-    // OK dialog (centrale) -> chiude SOLO dopo OK
     function showOkDialog(){
       okOverlay.style.display = "flex";
       okOverlay.setAttribute("aria-hidden","false");
@@ -992,9 +967,7 @@
       okOverlay.setAttribute("aria-hidden","true");
     }
 
-    // Stesso bottone OK per chiudere toast (se vuoi chiuderlo anche separatamente)
     toastOk.addEventListener("click", () => {
-      // qui NON chiudo il form: lo farà l'OK centrale
       hideToast();
     });
 
@@ -1006,16 +979,14 @@
       askForm.reset();
     });
 
-    // =================== EMAIL VALIDATION + SEND ===================
+    // =================== EMAIL SEND ===================
     function isAllowedDomain(email){
       const d = (email.split("@")[1] || "").toLowerCase();
       return ["bticino.com","legrand.com","legrand-ext.com"].includes(d);
     }
 
     function initEmailJS(){
-      try{
-        emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-      }catch(e){ /* ignore */ }
+      try{ emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY }); }catch(e){}
     }
 
     askForm.addEventListener("submit", async (e) => {
@@ -1057,11 +1028,8 @@
         await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, payload);
 
         hideMsg();
-
-        // MECCANICA RICHIESTA:
-        // - mostra toast + ok overlay
-        // - blocca chiusura finché non si preme OK
         waitingOk = true;
+
         showToast("Domanda inviata ✔");
         showOkDialog();
 
